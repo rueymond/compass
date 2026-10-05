@@ -12,7 +12,8 @@ Source material and draft share the vault (17:07). Drafting a newsletter and nee
 | YouTube script | `06 Writing/YouTube Scripts` | `YouTube Board` | `Templates/YouTube Script.md` | editor's Notion |
 | Article | `06 Writing/Articles` | `Article Board` | `Templates/Article.md` | Ghost (Practical PKM) |
 | Course content | `06 Writing/Course Content` | `Course Board` | `Templates/Course Lesson.md` | course platform |
-| Book notes | `07 Library/Book Notes` | none | `Templates/Book Note.md` | source material |
+| Library notes (books, articles, talks) | `07 Library/Notes` | none | `Templates/Library Note.md` | source material |
+| Courses you take, web clippings | `07 Library/Course`, `07 Library/Clippings` | none | `Templates/Library Course.md`, `Templates/Library Clipping.md` | source material; see [[Library]] |
 
 Board lanes: Backlog → Outlining → Drafting → Editing → Ready to publish → Published. QuickAdd commands drop ideas into each backlog (17:51). Drag left to right. Creating a note from a card uses the folder's template (board settings), so the metadata is right from the start.
 

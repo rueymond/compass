@@ -661,15 +661,15 @@
       "setFileExistsBehavior": true
     },
     {
-      "id": "lifeos-new-book",
-      "name": "📚 New book note",
+      "id": "lifeos-new-course",
+      "name": "🎓 New library course",
       "type": "Template",
       "command": true,
-      "templatePath": "Templates/Book Note.md",
+      "templatePath": "Templates/Library Course.md",
       "folder": {
         "enabled": true,
         "folders": [
-          "07 Library/Book Notes"
+          "07 Library/Course"
         ],
         "chooseWhenCreatingNote": false,
         "createInSameFolderAsActiveFile": false,
@@ -677,7 +677,67 @@
       },
       "fileNameFormat": {
         "enabled": true,
-        "format": "{{VALUE:title|label:Book title|trim}}"
+        "format": "{{VALUE:title|label:Course title|trim}}"
+      },
+      "appendLink": false,
+      "openFile": true,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFileInMode": "default",
+      "fileExistsMode": "Nothing",
+      "setFileExistsBehavior": true
+    },
+    {
+      "id": "lifeos-new-library-note",
+      "name": "📚 New library note",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Library Note.md",
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "07 Library/Notes"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE:title|label:Book, article, or talk title|trim}}"
+      },
+      "appendLink": false,
+      "openFile": true,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFileInMode": "default",
+      "fileExistsMode": "Nothing",
+      "setFileExistsBehavior": true
+    },
+    {
+      "id": "lifeos-new-clipping",
+      "name": "✂️ New clipping",
+      "type": "Template",
+      "command": true,
+      "templatePath": "Templates/Library Clipping.md",
+      "folder": {
+        "enabled": true,
+        "folders": [
+          "07 Library/Clippings"
+        ],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false,
+        "chooseFromSubfolders": false
+      },
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "{{VALUE:title|label:Clipping title|trim}}"
       },
       "appendLink": false,
       "openFile": true,

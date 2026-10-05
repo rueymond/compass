@@ -11,7 +11,7 @@ Life OS opens automatically after Obsidian finishes loading the vault. Use `Ctrl
 | Module | Purpose | Canonical data |
 | --- | --- | --- |
 | Home | Fast orientation, capture, planning, and AI entry | dashboard and workflow links |
-| Today | Daily questions, habits, journal, wins, gratitude, tasks | today's daily-note properties and QuickAdd |
+| Today | Highlight of the day, daily questions, journal, wins, gratitude, tasks | today's daily-note properties and QuickAdd |
 | Plan | Daily, weekly, quarterly, retreat, projects, ideal week | periodic and planning notes |
 | Focus | Commitments competing for attention | Tasks and project dashboards |
 | Review | Evidence across days and quarters | daily properties and periodic reviews |
@@ -31,7 +31,7 @@ Nodes come from the current vault, and connections come exclusively from Obsidia
 
 Home keeps orientation short: up to three tasks needing attention, capture, connected horizons, and a compact recorded-signal summary. Today shows up to five attention tasks. Attention means overdue, due today, scheduled today, or high priority. The full task dashboard remains available.
 
-Review holds three property-based charts: daily effort, a habit calendar, and life-area scores from the latest scored retreat. Select 7, 30, or 90 days for daily charts. Recorded daily effort columns open their source notes with click, Enter, or Space. A disclosure table provides daily values, and the retreat button opens the source of life-area scores. Sample notes are excluded by default; the Include samples control explicitly adds them. Missing scores stay blank and habits distinguish unchecked from unrecorded. Effort averages use recorded numeric scores from 1 to 10. Record counters exclude templates and build copies. See [[22 Data Definitions]] for coverage and calculation details.
+Review holds two property-based charts: daily effort and life-dimension scores from the latest scored retreat. Select 7, 30, or 90 days for daily charts. Recorded daily effort columns open their source notes with click, Enter, or Space. A disclosure table provides daily values, and the retreat button opens the source of life-area scores. Sample notes are excluded by default; the Include samples control explicitly adds them. Missing scores stay blank. Effort averages use recorded numeric scores from 1 to 10. Record counters exclude templates and build copies. See [[22 Data Definitions]] for coverage and calculation details.
 
 Plan includes a six-week month calendar. Highlighted dates open existing daily notes. Today can invoke the existing QuickAdd capture when its note is missing. Other empty dates are disabled. Month navigation never generates notes or edits journal content.
 
@@ -53,7 +53,7 @@ Today shows recorded-property coverage, not a life score. Focus workload segment
 
 Create shows up to three indexed open-item previews in each lane, while its heading count still includes all indexed checkbox items, including checked items. Source-line links open the original board. Missing and partial indexes remain visible. AI's diagram distinguishes the provider path from optional local MCP tools; neither branch implies a tested live connection.
 
-The live Today cockpit reads configured `dq_*` and `habit_*` frontmatter through Obsidian's local metadata cache. It does not render or send journal prose. Capture buttons run the existing QuickAdd commands so routing stays visible and deterministic. Universal Capture can also create actual Project, Person, newsletter, video-script, article, course-lesson, book, and study notes from the canonical templates, leaving an existing same-name note untouched.
+The live Today cockpit reads configured `dq_*` and `highlight_of_the_day` frontmatter through Obsidian's local metadata cache. It does not render or send journal prose. Capture buttons run the existing QuickAdd commands so routing stays visible and deterministic. Universal Capture can also create actual Project, Person, newsletter, video-script, article, course-lesson, book, and study notes from the canonical templates, leaving an existing same-name note untouched.
 
 AI may retrieve, summarize, detect patterns, and draft. Human approval is the operating policy, not a universal enforcement guarantee. The AI module reports the observable Agent Client permission setting; it does not change it. The application does not contain direct network, process, or vault-write capabilities.
 

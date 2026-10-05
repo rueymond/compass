@@ -3,7 +3,7 @@ date: <% tp.date.now("YYYY-MM-DD") %>
 quarter: <% tp.file.title.slice(0, 7) %>
 tags:
   - retreat
-<%* const _cf = app.vault.getAbstractFileByPath("Meta/Compass Config.md"); const _cfg = _cf ? (app.metadataCache.getFileCache(_cf)?.frontmatter ?? {}) : {}; const _ws = Array.isArray(_cfg.wheel_areas) && _cfg.wheel_areas.length ? _cfg.wheel_areas : ["wheel_health","wheel_relationships","wheel_family","wheel_career","wheel_finances","wheel_growth","wheel_fun","wheel_meaning"]; tR += _ws.map(k => k + ": ").join("\n"); %>
+<%* const _cf = app.vault.getAbstractFileByPath("Meta/Compass Config.md"); const _cfg = _cf ? (app.metadataCache.getFileCache(_cf)?.frontmatter ?? {}) : {}; const _ws = Array.isArray(_cfg.wheel_areas) && _cfg.wheel_areas.length ? _cfg.wheel_areas : ["wheel_business","wheel_family","wheel_growth","wheel_health"]; tR += _ws.map(k => k + ": ").join("\n"); %>
 ---
 > Name this note `YYYY-QN Personal Retreat` (for example `2026-Q3 Personal Retreat`). The Compass dashboard finds this quarter's retreat by that naming convention and renders the wheel of life from the `wheel_*` properties above. No code changes needed.
 
@@ -38,9 +38,6 @@ Read the last 90 days of daily notes. Look for trends in the effort scores and f
 const q = moment(dv.current().quarter, "YYYY-[Q]Q");
 await dv.view("Meta/views/dailyquestions", { from: q.clone().startOf("quarter").format("YYYY-MM-DD"), to: q.clone().endOf("quarter").format("YYYY-MM-DD") });
 ```
-```dataviewjs
-await dv.view("Meta/views/habits", { days: 28 });
-```
 Wins this quarter:
 ```dataviewjs
 const q = moment(dv.current().quarter, "YYYY-[Q]Q");
@@ -54,12 +51,21 @@ if (wins.length) dv.list(wins); else dv.paragraph("*No wins logged this quarter.
 What stood out:
 - 
 
-## 3. Wheel of life
-Rate your current happiness with each area 1 to 10 in the properties at the top. Then pick ONE area that gets attention for the next 90 days.
+## 3. Wheel of life: the four life dimensions
+Rate your current happiness with each ICOR life dimension 1 to 10 in the properties at the top. Then pick ONE dimension that gets attention for the next 90 days.
+
+| Dimension | What it covers |
+| --- | --- |
+| Business | work, income, and what you build or serve |
+| Family | partner, kids, friends, and the people you show up for |
+| Growth | learning, faith, craft, and who you are becoming |
+| Health | body, sleep, energy, and mind |
+
+(The meanings live in [[Compass Config]] under `dimensions`; edit them there.)
 ```dataviewjs
 await dv.view("Meta/views/wheel", { page: dv.current().file.path });
 ```
-Focus area for the next 90 days:
+Focus dimension for the next 90 days:
 - 
 
 Why this one:
@@ -78,16 +84,24 @@ What did not go well:
 What I learned:
 - 
 
+One line per dimension, in your own words:
+| Dimension | How last quarter actually went |
+| --- | --- |
+| Business |  |
+| Family |  |
+| Growth |  |
+| Health |  |
+
 ### Part 2: Start / Stop / Keep
 | Start | Stop | Keep |
 | --- | --- | --- |
 |  |  |  |
 
 ## 5. Intentions for next quarter
-Three at most. Each should be something you can act on weekly.
-1. 
-2. 
-3. 
+Three at most, across all four dimensions (not three each). Each should be something you can act on weekly. Name the dimension it serves.
+1. (dimension: ) 
+2. (dimension: ) 
+3. (dimension: ) 
 
 ## 6. Review the ideal week
 Does [[Ideal Week]] have time blocked for the intentions above? Update it now.
@@ -97,7 +111,7 @@ Changes to make:
 - 
 
 ## 7. Projects to commit to
-Create or update project notes in `04 Projects/` and set `quarter:` to this quarter so they show up on the quarterly note.
+Create or update project notes in `04 Projects/`, set `quarter:` to this quarter so they show up on the quarterly note, and set `area:` to the dimension the project serves (business, family, growth, or health).
 - 
 
 ## Closing

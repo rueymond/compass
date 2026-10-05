@@ -4,6 +4,26 @@ Format: Added, Changed, Templates (manual merge notes), Plugins, Breaking. Semve
 
 ## Unreleased
 
+### ICOR restructure: focus, project health, life dimensions, library
+Added
+- `highlight_of_the_day` (and optional `dimension`) in `Templates/Daily Note.md`, shown in a callout under the date. `Meta/views/focus.js` puts it in large type as the first block of the Compass Dashboard, followed by today's due and scheduled tasks and the project health warning (focus mode).
+- `Meta/views/projects.js`: active projects with no open task (unchecked task in the note or tagged `#project/<slug>` anywhere) are flagged 🔴, on the Projects Dashboard (Health column, flagged first) and the Compass Dashboard (warnings only).
+- `07 Library/Course`, `07 Library/Notes`, `07 Library/Clippings`, with templates `Library Course.md`, `Library Note.md`, `Library Clipping.md`, Templater folder templates, QuickAdd choices `lifeos-new-course`, `lifeos-new-library-note`, `lifeos-new-clipping`, and `00 Dashboards/Library.md`.
+- `Guide/06 Workflow - ICOR, Focus, and Library.md`.
+
+Changed
+- Wheel of life uses the four ICOR life dimensions: `wheel_business`, `wheel_family`, `wheel_growth`, `wheel_health`, with meanings in a new `dimensions` config list. Retreat, quarterly, and weekly templates are organised by dimension; project `area` takes a dimension key.
+- Weekly review table shows each day's highlight instead of habit hits. Life OS application Today shows the highlight; Review drops the habit chart. Prompts 02, 03, 04, 05, 13, 15, 16 and the Guide follow.
+- The build keeps `.gitkeep` files in user folders so the empty library folders ship.
+
+Breaking
+- Habit tracking removed: `habit_*` properties, `habits` and `habit_prefix` config keys, `00 Dashboards/Habit Canvas.md`, `Meta/views/habits.js`, `Guide/06 Workflow - Habit Tracking.md`, the habit step of the Daily Questions Prompt. Existing `habit_*` values in notes are ignored, not deleted.
+- `07 Library/Book Notes` and `Templates/Book Note.md` replaced by `07 Library/Notes` and `Templates/Library Note.md` (`type: note`, `kind: book`). QuickAdd `lifeos-new-book` is gone. Move existing book notes by hand.
+- Old eight-area `wheel_*` keys in existing retreat notes still render, but new retreats use the four dimensions.
+
+Templates (manual merge)
+- `Daily Note`, `Daily Questions Prompt`, `Personal Retreat`, `Weekly Note`, `Quarterly Note`, `Project`; new `Library Course`, `Library Note`, `Library Clipping`; removed `Book Note`.
+
 ### Release preparation hardening
 - Skip live personal defaults before staging; rebuild canonical boards empty instead of copying live cards; remove the arbitrary Board.md exemption; reset core machine state and omit local agent directories.
 - Add disposable archive restore verification with checksum, traversal, duplicate-path, file-type, inventory, and per-file integrity checks. Eleven release-safety tests cover core rejection paths.

@@ -89,7 +89,9 @@ const recordChoiceContracts = [
   ["lifeos-new-video", "Templates/YouTube Script.md", "06 Writing/YouTube Scripts"],
   ["lifeos-new-article", "Templates/Article.md", "06 Writing/Articles"],
   ["lifeos-new-course-lesson", "Templates/Course Lesson.md", "06 Writing/Course Content"],
-  ["lifeos-new-book", "Templates/Book Note.md", "07 Library/Book Notes"],
+  ["lifeos-new-course", "Templates/Library Course.md", "07 Library/Course"],
+  ["lifeos-new-library-note", "Templates/Library Note.md", "07 Library/Notes"],
+  ["lifeos-new-clipping", "Templates/Library Clipping.md", "07 Library/Clippings"],
   ["lifeos-new-study-note", "Templates/Study Note.md", "09 Reading/Study Notes"],
 ];
 const invalidRecordChoices = recordChoiceContracts.filter(
@@ -336,15 +338,14 @@ try {
     ["05 People/Person.md", { type: "person" }],
     ["06 Writing/Articles/Article.md", { type: "article" }],
     ["06 Writing/Articles/Sample.md", { type: "article", tags: ["example"] }],
-    ["07 Library/Task Example.md", { type: "book" }],
+    ["07 Library/Task Example.md", { type: "note" }],
     [
       "Meta/Compass Config.md",
       {
         questions: [{ key: "dq_goals", text: "Did I set clear goals?" }],
-        habits: ["habit_journal"],
       },
     ],
-    ["01 Journal/Daily/2026-09-09.md", { dq_goals: 8, habit_journal: true }],
+    ["01 Journal/Daily/2026-09-09.md", { dq_goals: 8, highlight_of_the_day: "Ship the draft" }],
     ["00 Dashboards/Setup.md", { status: "open" }],
   ]);
   const taskItem = (task, line) => ({
@@ -529,7 +530,7 @@ try {
     }
     if (screen === "today") {
       todayHasPropertyValues =
-        treeHasText(view.contentEl, "8/10") && treeHasText(view.contentEl, "Done");
+        treeHasText(view.contentEl, "8/10") && treeHasText(view.contentEl, "Ship the draft");
     }
   }
   check("all application screens render", emptyScreens.length === 0, emptyScreens.join(", "));
@@ -641,12 +642,10 @@ try {
 
   metadata.set("Meta/Compass Config.md", {
     questions: [{ key: "dq_goals", text: "Did I set clear goals?" }],
-    habits: ["habit_journal", "habit_exercise", "habit_reading"],
   });
   metadata.set("01 Journal/Daily/2026-09-09.md", {
     dq_goals: true,
-    habit_journal: false,
-    habit_reading: "yes",
+    highlight_of_the_day: "  ",
   });
   const strictToday = view.getTodayData();
   check(
@@ -656,31 +655,38 @@ try {
       strictToday.questions[0]?.display === "Invalid value"
   );
   check(
-    "Today distinguishes unchecked, missing, and invalid habits",
-    strictToday.habitRecorded === 1 &&
-      strictToday.habitDone === 0 &&
-      strictToday.habits.map((habit) => habit.state).join(",") ===
-        "unchecked,missing,invalid" &&
-      strictToday.habits.map((habit) => habit.display).join(",") ===
-        "Unchecked,Not recorded,Invalid value"
+    "Today treats a blank highlight as not set",
+    strictToday.highlight?.recorded === false &&
+      strictToday.highlight?.label === "Not set" &&
+      !("habits" in strictToday)
+  );
+  metadata.set("01 Journal/Daily/2026-09-09.md", {
+    dq_goals: 8,
+    highlight_of_the_day: "Ship the draft",
+    dimension: "business",
+  });
+  const highlightToday = view.getTodayData();
+  check(
+    "Today shows the highlight of the day and its dimension",
+    highlightToday.highlight?.recorded === true &&
+      highlightToday.highlight?.label === "Ship the draft" &&
+      highlightToday.highlight?.display === "Business" &&
+      highlightToday.questionRecorded === 1,
+    JSON.stringify(highlightToday.highlight)
   );
   const coverage = view.summarizeDailyProperties(
     {
       dq_one: 8,
       dq_two: "8",
-      habit_one: false,
-      habit_two: true,
-      habit_three: "false",
+      highlight_of_the_day: "Call Mum",
     },
-    ["dq_one", "dq_two"],
-    ["habit_one", "habit_two", "habit_three"]
+    ["dq_one", "dq_two"]
   );
   check(
-    "daily property coverage counts recorded false separately from habits done",
+    "daily property coverage counts valid scores and the highlight",
     coverage.questionsRecorded === 1 &&
-      coverage.habitsRecorded === 2 &&
-      coverage.habitsDone === 1 &&
-      coverage.recorded === 3,
+      coverage.highlight === true &&
+      coverage.recorded === 1,
     JSON.stringify(coverage)
   );
   metadata.set("Meta/Compass Config.md", {
@@ -690,7 +696,6 @@ try {
     retreat_folder: "Custom/Retreats",
     projects_folder: "Custom/Projects/",
     questions: [{ key: "dq_goals", text: "Did I set clear goals?" }],
-    habits: ["habit_journal"],
   });
   requestedPaths.length = 0;
   view.getTodayData();
@@ -728,11 +733,10 @@ try {
   );
   metadata.set("Meta/Compass Config.md", {
     questions: [{ key: "dq_goals", text: "Did I set clear goals?" }],
-    habits: ["habit_journal"],
   });
   metadata.set("01 Journal/Daily/2026-09-09.md", {
     dq_goals: 8,
-    habit_journal: true,
+    highlight_of_the_day: "Ship the draft",
   });
 
   const editorCalls = [];
@@ -770,12 +774,12 @@ try {
   check("direct module activation", view.activeScreen === "today", view.activeScreen);
 
   fakeFiles.push(new TFile("01 Journal/Daily/2026-09-09.md"), new TFile("01 Journal/Daily/2026-09-08.md"));
-  metadata.set("01 Journal/Daily/2026-09-08.md", { tags: ["example"], dq_goals: 2, habit_journal: false });
+  metadata.set("01 Journal/Daily/2026-09-08.md", { tags: ["example"], dq_goals: 2 });
   const real = view.getAnalytics();
   check("analytics excludes sample scores and preserves missing days", real.average === 8 && real.scored === 1 && real.days.filter((day) => day.score === null).length === 29);
   view.includeExamples = true;
   check("analytics sample inclusion is explicit", view.getAnalytics().average === 5);
-  metadata.set("01 Journal/Daily/2026-09-08.md", { dq_goals: true, habit_journal: false });
+  metadata.set("01 Journal/Daily/2026-09-08.md", { dq_goals: true });
   check("boolean question values are not numeric scores", view.getAnalytics().scored === 1);
   view.includeExamples = false;
   check("record counters exclude templates and build copies",
@@ -801,10 +805,10 @@ try {
       const date = new Date("2026-09-09T12:00:00Z"); date.setUTCDate(date.getUTCDate() - i);
       const filePath = `01 Journal/Daily/${date.toISOString().slice(0, 10)}.md`;
       if (!fakeFiles.some((file) => file.path === filePath)) fakeFiles.push(new TFile(filePath));
-      metadata.set(filePath, { dq_goals: 4 + i % 7, habit_journal: i % 3 !== 0, habit_reading: i % 4 !== 0, habit_exercise: i % 2 === 0 });
+      metadata.set(filePath, { dq_goals: 4 + i % 7, highlight_of_the_day: i % 3 ? "Synthetic highlight" : "" });
     }
     fakeFiles.push(new TFile("02 Retreats/2026-Q3 Personal Retreat.md"));
-    metadata.set("02 Retreats/2026-Q3 Personal Retreat.md", { wheel_health: 7, wheel_relationships: 8, wheel_growth: 6, wheel_career: 7, wheel_fun: 5, wheel_meaning: 8 });
+    metadata.set("02 Retreats/2026-Q3 Personal Retreat.md", { wheel_business: 7, wheel_family: 8, wheel_growth: 6, wheel_health: 7 });
     view.activeScreen = "home"; view.render();
     fs.writeFileSync(process.env.LIFE_OS_PREVIEW, `<!doctype html><html><head><meta charset="utf-8"><title>Life OS visual test, synthetic data</title><style>
       :root { --background-primary:#202020; --background-secondary:#292929; --text-normal:#ddd; --text-muted:#aaa; --text-faint:#888; --color-green:#7aa995; --color-red:#df7777; }

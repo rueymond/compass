@@ -9,7 +9,7 @@ The template ships Goldsmith's six universal questions (set clear goals, make pr
 
 ## How it is built here
 - **Properties**: one `dq_*` number property per question, generated into every new daily note from the `questions` list in [[Compass Config]]. Numbers 1 to 10.
-- **End-of-day shortcut** (Mike uses a custom shortcut, 4:29): `Templates/Daily Questions Prompt.md`. Open the daily note, run the template. It asks each question, then yes/no for each `habit_*` checkbox, and writes everything to the properties. Nothing is inserted into the body.
+- **End-of-day shortcut** (Mike uses a custom shortcut, 4:29): `Templates/Daily Questions Prompt.md`. Open the daily note, run the template. It asks each question and writes the scores to the properties. Nothing is inserted into the body. (Habit checkboxes were removed; the morning counterpart is the `highlight_of_the_day` property, see [[06 Workflow - ICOR, Focus, and Library]].)
 - **Capture** (Mike uses a QuickAdd macro, 4:40): three QuickAdd commands append to `## Journal` (timestamped), `## Wins`, `## Gratitude` in today's note, creating it from the template if needed.
 - **On this day** (5:01): DataviewJS block at the bottom of the daily note embeds the `## Journal` section from the same date in every previous year.
 - **Dashboard**: `00 Dashboards/Daily Questions.md` and the widget on the Compass dashboard (lines, averages, toggles, time frame).

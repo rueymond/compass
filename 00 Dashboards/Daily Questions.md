@@ -22,7 +22,7 @@ if (keys.length) dv.table(["Day", ...keys.map(label)], rows); else dv.paragraph(
 ## Ask
 ```agent
 type: button
-text: "Trends in my questions and habits"
+text: "Trends in my questions"
 prompt: "Read Prompts/13 Trend Analysis.md with vault_read and follow its Prompt section for the note I have open (or the current period if none applies)."
 viewType: right-pane
 ```

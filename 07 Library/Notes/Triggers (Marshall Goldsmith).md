@@ -1,13 +1,15 @@
 ---
-type: book
+type: note
+kind: book
 author: Marshall Goldsmith
 year: 2015
 rating: 5
-status: finished
+status: done
 started: 
 finished: 
+source: https://geni.us/triggers-book
 tags:
-  - book
+  - library/note
   - example
 ---
 The source of the Daily Questions workflow. Link: https://geni.us/triggers-book

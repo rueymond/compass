@@ -17,7 +17,7 @@ python3 scripts/verify_template.py build/Compass
 4. **No em dashes anywhere**: text, code, comments, commit messages, prompts. The verifier treats U+2014 as a forbidden pattern. Use commas, periods, colons, parentheses, or conjunctions.
 5. Keep `THIRD_PARTY_NOTICES.md` and `Meta/version.md` in step with the plugin manifests under `.obsidian/plugins/`; the verifier checks that each shipped version appears in the notices.
 6. Record user-visible changes in `CHANGELOG.md` (Added, Changed, Templates, Plugins, Breaking; semver: major for path or property renames, minor for a new widget or workflow, patch for docs and fixes).
-7. Follow the conventions in `AGENTS.md` for property names (`dq_*`, `habit_*`, `wheel_*`), task format, and links, so dashboards keep discovering things by prefix.
+7. Follow the conventions in `AGENTS.md` for property names (`dq_*`, `wheel_*`, `highlight_of_the_day`), task format, and links, so dashboards keep discovering things by prefix.
 
 ## Proposing a new prompt
 

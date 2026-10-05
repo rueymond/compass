@@ -17,10 +17,10 @@ Where claude-obsidian operations file things in this Compass vault. The plugin c
 | --- | --- | --- |
 | `/save` an answer, decision, or insight | `wiki/concepts/<slug>.md` | One page per idea. Link the Compass note it came from (a daily note, a retreat, a project). |
 | `/save` a session summary | `wiki/log.md` | Append; newest first. |
-| Ingest a book, article, transcript, clipped page | `wiki/sources/<slug>.md` + source ledger row | Book notes that the user writes by hand stay in `07 Library/Book Notes` (Templater folder template, block-id quotes). Do not move them. |
+| Ingest a book, article, transcript, clipped page | `wiki/sources/<slug>.md` + source ledger row | Library notes and courses that the user writes by hand stay in `07 Library/Notes` and `07 Library/Course` (Templater folder templates, block-id quotes). Do not move them. Clippings in `07 Library/Clippings` may be ingested. |
 | Anything about a person | link to `05 People/<Name>.md` | Do not create `wiki/entities/<name>.md` for people who have a people note. |
 | Anything about a project | link to `04 Projects/<Name>.md` | Same rule. |
-| Journal, retreat, planning, habit, task content | never ingested | Personal operating data; no ledger rows, no provenance model. |
+| Journal, retreat, planning, task content | never ingested | Personal operating data; no ledger rows, no provenance model. |
 | Questions to research later | `wiki/index.md` → Questions | Then `autoresearch` only with explicit consent (network egress). |
 
 Mode: `generic` (no `.vault-meta/mode.json`). Do not switch to PARA; it would duplicate `04 Projects` and `03 Planning` under `wiki/`.

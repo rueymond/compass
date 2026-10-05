@@ -7,7 +7,6 @@ quarterly_folder: 01 Journal/Quarterly
 retreat_folder: 02 Retreats
 projects_folder: 04 Projects
 dq_prefix: dq_
-habit_prefix: habit_
 wheel_prefix: wheel_
 board_done_lanes: Done,Published,Archive
 questions:
@@ -23,19 +22,20 @@ questions:
     text: Did I do my best to build positive relationships?
   - key: dq_engaged
     text: Did I do my best to be fully engaged?
-habits:
-  - habit_journal
-  - habit_exercise
-  - habit_reading
 wheel_areas:
-  - wheel_health
-  - wheel_relationships
+  - wheel_business
   - wheel_family
-  - wheel_career
-  - wheel_finances
   - wheel_growth
-  - wheel_fun
-  - wheel_meaning
+  - wheel_health
+dimensions:
+  - key: business
+    text: Work, income, and what you build or serve
+  - key: family
+    text: Partner, kids, friends, and the people you show up for
+  - key: growth
+    text: Learning, faith, craft, and who you are becoming
+  - key: health
+    text: Body, sleep, energy, and mind
 ---
 # Compass Config
 
@@ -62,17 +62,19 @@ questions:
   - {key: dq_exercise, text: Did I do my best to exercise?}
 ```
 
-## Habits (`habits`)
-Checkbox properties added to every new daily note. Keep 3 to 5 per season. Prefix `habit_`.
+## Life dimensions (`wheel_areas`, `dimensions`)
+Compass uses the four ICOR life dimensions: **Business, Family, Growth, Health**. They appear in three places:
+- `wheel_areas`: number properties (1 to 10) added to every new personal retreat note and drawn as the wheel of life. Keep the `wheel_` prefix; the radar chart labels itself from the key and needs at least 3 areas.
+- `dimensions`: the same four areas with a one-line meaning each. Retreat, quarterly, and weekly notes are organised by them, and the `area` property of a project and the optional `dimension` property of a daily note take one of these keys.
+- Life Theme stays a single sentence above all four; it is not split per dimension.
 
-## Wheel of life (`wheel_areas`)
-Number properties (1 to 10) added to every new personal retreat note. Rename freely with the `wheel_` prefix; the radar chart labels itself from the key.
+Keep `wheel_areas` and `dimensions` in step: `wheel_<key>` for every `key`.
 
 ## Folders and prefixes
 | Property | Used by |
 | --- | --- |
 | `daily_folder`, `weekly_folder`, `quarterly_folder`, `retreat_folder`, `projects_folder` | widgets and quick links; must match the Periodic Notes settings |
-| `dq_prefix`, `habit_prefix`, `wheel_prefix` | property discovery |
+| `dq_prefix`, `wheel_prefix` | property discovery |
 | `board_done_lanes` | Kanban lanes that count as finished on the Boards dashboard |
 
 Not in English? Rename the keys (`dq_aprender`) and translate the `text` values; every chart labels itself from the key. The Guide stays in English.

@@ -14,16 +14,19 @@ Markdown notes and their properties are canonical. Life OS does not maintain a s
 - Question changes can change what an average means. Do not present comparisons across different question sets as equivalent measurements.
 - Check-in coverage counts valid recorded answers. It is not a grade of a person's life.
 
-## Habits
+## Highlight of the day
 
-| Stored value | Meaning | Recorded | Done |
-| --- | --- | --- | --- |
-| `true` | Done | Yes | Yes |
-| `false` | Unchecked | Yes | No |
-| Missing or blank | Not recorded | No | No |
-| Other value | Invalid | No | No |
+| Stored value | Meaning |
+| --- | --- |
+| Non-empty text in `highlight_of_the_day` | Set; shown as written |
+| Missing, blank, or whitespace only | Not set |
+| Any other type | Not set |
 
-Habit completion is done divided by recorded entries, with both counts visible. A recorded unchecked answer contributes to check-in coverage, not completion. Never silently count missing days as failed habits.
+The highlight is shown, never scored. It does not count toward check-in coverage, and a day without one is not a failure. `dimension` is an optional label (business, family, growth, health) shown next to it. Habit tracking (`habit_*`) is not part of the contract; old `habit_*` properties are ignored.
+
+## Project health
+
+A project (a note in the configured projects folder with `type: project` and a status other than `done`) has a next action when it has at least one open task: an unchecked task in the project note, or an open task tagged `#project/<slug>` or a sub-tag anywhere outside `wiki/`. Each task counts once. A project with none is flagged 🔴. The flag is a prompt, not a judgment.
 
 ## Tasks
 

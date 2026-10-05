@@ -49,19 +49,6 @@ function ratingState(value) {
   return { state: "invalid", value: null };
 }
 
-function habitState(value) {
-  if (value === undefined || value === null || value === "") {
-    return "missing";
-  }
-  if (value === true) {
-    return "done";
-  }
-  if (value === false) {
-    return "unchecked";
-  }
-  return "invalid";
-}
-
 const CAPTURE_ACTIONS = [
   {
     icon: "notebook-pen",
@@ -152,10 +139,22 @@ const CAPTURE_MENU_ACTIONS = [
     command: "quickadd:choice:lifeos-new-course-lesson",
   },
   {
+    icon: "graduation-cap",
+    label: "New library course",
+    description: "Save a course you are taking to 07 Library/Course.",
+    command: "quickadd:choice:lifeos-new-course",
+  },
+  {
     icon: "book-plus",
-    label: "New book note",
-    description: "Create a book note in the local library.",
-    command: "quickadd:choice:lifeos-new-book",
+    label: "New library note",
+    description: "Save notes on a book, article, or talk to 07 Library/Notes.",
+    command: "quickadd:choice:lifeos-new-library-note",
+  },
+  {
+    icon: "scissors",
+    label: "New clipping",
+    description: "Save a web clipping to 07 Library/Clippings.",
+    command: "quickadd:choice:lifeos-new-clipping",
   },
   {
     icon: "book-open-check",
@@ -196,7 +195,7 @@ const DESTINATIONS = [
   {
     icon: "layout-dashboard",
     label: "Compass",
-    description: "Direction, habits, questions, and life wheel.",
+    description: "Today’s highlight, questions, and life dimensions.",
     path: "00 Dashboards/Compass Dashboard.md",
   },
   {
@@ -249,10 +248,10 @@ const MODULES = {
         path: "00 Dashboards/Task Dashboard.md",
       },
       {
-        icon: "activity",
-        label: "Habits",
-        description: "Review current habit consistency.",
-        path: "00 Dashboards/Habit Canvas.md",
+        icon: "target",
+        label: "Highlight of the day",
+        description: "Open focus mode: today’s highlight and tasks.",
+        path: "00 Dashboards/Compass Dashboard.md",
       },
     ],
   },
@@ -301,12 +300,6 @@ const MODULES = {
         description: "Find active projects that need a next action.",
         path: "00 Dashboards/Projects Dashboard.md",
       },
-      {
-        icon: "activity",
-        label: "Habit signals",
-        description: "See consistency alongside the days that explain it.",
-        path: "00 Dashboards/Habit Canvas.md",
-      },
     ],
   },
   review: {
@@ -320,12 +313,6 @@ const MODULES = {
         label: "Daily questions",
         description: "Review effort scores and trends.",
         path: "00 Dashboards/Daily Questions.md",
-      },
-      {
-        icon: "activity",
-        label: "Habit canvas",
-        description: "Review streaks, gaps, and completion.",
-        path: "00 Dashboards/Habit Canvas.md",
       },
       PERIOD_ACTIONS[1],
       PERIOD_ACTIONS[2],
@@ -431,13 +418,31 @@ const MODULES = {
     eyebrow: "Knowledge in context",
     title: "Library",
     description:
-      "Keep books, sources, reading, and ideas close to the work they inform.",
+      "Keep courses, notes, clippings, and reading close to the work they inform.",
     actions: [
       {
+        icon: "graduation-cap",
+        label: "New course",
+        description: "Save a course you are taking.",
+        command: "quickadd:choice:lifeos-new-course",
+      },
+      {
         icon: "book-plus",
-        label: "New book note",
-        description: "Create a canonical book note.",
-        command: "quickadd:choice:lifeos-new-book",
+        label: "New note",
+        description: "Notes on a book, article, or talk.",
+        command: "quickadd:choice:lifeos-new-library-note",
+      },
+      {
+        icon: "scissors",
+        label: "New clipping",
+        description: "Save something from the web.",
+        command: "quickadd:choice:lifeos-new-clipping",
+      },
+      {
+        icon: "library",
+        label: "Library dashboard",
+        description: "Course, Notes, and Clippings side by side.",
+        path: "00 Dashboards/Library.md",
       },
       {
         icon: "book-open-check",
@@ -728,7 +733,7 @@ class LifeOSHomeView extends ItemView {
     const model = this.getAnalytics();
     signals.createEl("h2", { text: "Recorded signals" });
     signals.createEl("p", { text: `${model.scored} scored days in ${this.analyticsDays} days · ${model.average === null ? "No effort scores yet" : `${model.average.toFixed(1)} / 10 mean daily effort`}. Missing days are not zero.${this.includeExamples ? " Samples included." : " Samples excluded."}` });
-    this.addButton(signals, { icon: "chart-line", label: "Explore Review", description: "Effort, habit rhythm, and life areas.", onClick: () => { this.activeScreen = "review"; this.render(); } });
+    this.addButton(signals, { icon: "chart-line", label: "Explore Review", description: "Effort, highlights, and life dimensions.", onClick: () => { this.activeScreen = "review"; this.render(); } });
   }
 
   isExample(data) {
@@ -748,7 +753,6 @@ class LifeOSHomeView extends ItemView {
       return { date: date.toISOString().slice(0, 10), data: null, score: null };
     });
     const byDate = new Map(days.map((day) => [day.date, day]));
-    const habits = new Set(this.getHabitKeys(config));
     let samples = 0;
     for (const file of this.app.vault.getMarkdownFiles()) {
       if (!file.path.startsWith(`${folder}/`)) continue;
@@ -768,7 +772,6 @@ class LifeOSHomeView extends ItemView {
         )
         .map(([, value]) => value);
       day.score = scores.length ? scores.reduce((a, b) => a + b, 0) / scores.length : null;
-      Object.keys(data).filter((key) => key.startsWith(config.habit_prefix || "habit_")).forEach((key) => habits.add(key));
     }
     const scored = days.filter((day) => day.score !== null);
     const average = scored.length ? scored.reduce((sum, day) => sum + day.score, 0) / scored.length : null;
@@ -781,7 +784,7 @@ class LifeOSHomeView extends ItemView {
       key.startsWith(config.wheel_prefix || "wheel_") && ratingState(value).state === "recorded"));
     const wheel = retreat ? Object.entries(this.getFrontmatter(retreat)).filter(([key, value]) =>
       key.startsWith(config.wheel_prefix || "wheel_") && ratingState(value).state === "recorded") : [];
-    return { days, habits: [...habits], samples, average, scored: scored.length, wheel, retreat };
+    return { days, samples, average, scored: scored.length, wheel, retreat };
   }
 
   renderAnalytics(parent) {
@@ -792,7 +795,7 @@ class LifeOSHomeView extends ItemView {
     copy.createEl("h2", { text: "Your life, in view" });
     copy.createEl("p", { text: this.includeExamples
       ? "Sample notes included. These charts may contain demonstration data."
-      : "Recorded effort and habits. Blank days mean no data, not zero." });
+      : "Recorded effort and life dimensions. Blank days mean no data, not zero." });
     const controls = heading.createDiv({ cls: "life-os-chart-controls" });
     for (const count of [7, 30, 90]) {
       const button = controls.createEl("button", {
@@ -855,27 +858,6 @@ class LifeOSHomeView extends ItemView {
     }
     if (!model.wheel.length) wheel.createDiv({ cls: "life-os-live-empty", text: "No life-area scores recorded. Open Retreat from Plan to add your own." });
     if (model.retreat) this.addButton(wheel, { icon: "book-open", label: "Open scored retreat", description: "See the source of these life-area scores.", onClick: () => this.openPath(model.retreat.path) });
-
-    const habits = grid.createDiv({ cls: "life-os-chart-card life-os-habit-chart" });
-    habits.createEl("h3", { text: "Habit rhythm" });
-    habits.createEl("p", { text: "Filled: done · muted: unchecked · outlined: no record. Hover a day for details." });
-    const matrix = habits.createDiv({ cls: "life-os-habit-matrix" });
-    for (const key of model.habits) {
-      const row = matrix.createDiv({ cls: "life-os-habit-row" });
-      row.createSpan({ text: this.formatPropertyLabel(key) });
-      const cells = row.createDiv({ cls: "life-os-habit-cells" });
-      let done = 0, recorded = 0;
-      for (const day of model.days) {
-        const value = day.data?.[key];
-        if (typeof value === "boolean") recorded += 1;
-        if (value === true) done += 1;
-        const label = `${day.date}, ${this.formatPropertyLabel(key)}: ${value === true ? "Done" : value === false ? "Unchecked" : "No record"}`;
-        cells.createSpan({ cls: `life-os-habit-cell ${value === true ? "is-done" : value === false ? "is-open" : "is-missing"}`,
-          attr: { title: label, "aria-label": label, role: "img" } });
-      }
-      row.createSpan({ text: recorded ? `${done}/${recorded}` : "No data" });
-    }
-    if (!model.habits.length) habits.createDiv({ cls: "life-os-live-empty", text: "Add your habits in Configure to begin." });
   }
 
   renderRail(parent) {
@@ -1053,7 +1035,7 @@ class LifeOSHomeView extends ItemView {
       const emptyCopy = empty.createDiv();
       emptyCopy.createEl("strong", { text: "Create today’s note" });
       emptyCopy.createEl("p", {
-        text: "Life OS will use your configured questions and habits.",
+        text: "Life OS will use your configured questions and show your highlight of the day.",
       });
       this.addButton(empty, {
         icon: "plus",
@@ -1066,8 +1048,8 @@ class LifeOSHomeView extends ItemView {
       return;
     }
 
-    const completed = data.questionRecorded + data.habitRecorded;
-    const total = data.questions.length + data.habits.length;
+    const completed = data.questionRecorded;
+    const total = data.questions.length;
     if (this.visualEnabled() && total) {
       const meter = section.createEl("progress", { cls: "life-os-checkin-meter", attr: { max: String(total), value: String(completed), "aria-label": `${completed} of ${total} check-in properties recorded, not a completion score` } });
       meter.textContent = `${completed}/${total} recorded`;
@@ -1080,17 +1062,17 @@ class LifeOSHomeView extends ItemView {
     const grid = section.createDiv({ cls: "life-os-today-grid" });
     this.renderTodayList(
       grid,
+      "Highlight of the day",
+      "The one thing that would make today a good day.",
+      [data.highlight],
+      "target"
+    );
+    this.renderTodayList(
+      grid,
       "Daily questions",
       "Rate effort from 1 to 10.",
       data.questions,
       "line-chart"
-    );
-    this.renderTodayList(
-      grid,
-      "Habits",
-      "A signal, never a judgment.",
-      data.habits,
-      "activity"
     );
 
     const actions = section.createDiv({ cls: "life-os-today-actions" });
@@ -1142,7 +1124,6 @@ class LifeOSHomeView extends ItemView {
     const todayFile = this.app.vault.getAbstractFileByPath(todayPath);
     const today = this.getFrontmatter(todayFile);
     const questionConfig = Array.isArray(config.questions) ? config.questions : [];
-    const habitConfig = Array.isArray(config.habits) ? config.habits : [];
 
     const questions = questionConfig
       .map((question) => {
@@ -1164,42 +1145,29 @@ class LifeOSHomeView extends ItemView {
         };
       })
       .filter((question) => question.key);
-    const habits = habitConfig
-      .map((habit) => String(habit || ""))
-      .filter(Boolean)
-      .map((key) => {
-        const state = habitState(today[key]);
-        return {
-          key,
-          label: this.formatPropertyLabel(key),
-          state,
-          recorded: state === "done" || state === "unchecked",
-          complete: state === "done",
-          display:
-            state === "done"
-              ? "Done"
-              : state === "unchecked"
-                ? "Unchecked"
-                : state === "invalid"
-                  ? "Invalid value"
-                  : "Not recorded",
-        };
-      });
+    const highlightText = typeof today.highlight_of_the_day === "string" ? today.highlight_of_the_day.trim() : "";
+    const dimension = typeof today.dimension === "string" ? today.dimension.trim() : "";
+    const highlight = {
+      key: "highlight_of_the_day",
+      label: highlightText || "Not set",
+      state: highlightText ? "recorded" : "missing",
+      recorded: Boolean(highlightText),
+      complete: Boolean(highlightText),
+      display: highlightText ? (dimension ? this.formatPropertyLabel(dimension) : "Set") : "Set it in today’s note",
+    };
 
     return {
       exists: todayFile instanceof TFile,
       path: todayPath,
       questions,
-      habits,
+      highlight,
       questionRecorded: questions.filter((question) => question.recorded).length,
-      habitRecorded: habits.filter((habit) => habit.recorded).length,
-      habitDone: habits.filter((habit) => habit.complete).length,
     };
   }
 
   formatPropertyLabel(key) {
     return String(key)
-      .replace(/^(dq|habit|wheel)_/, "")
+      .replace(/^(dq|wheel)_/, "")
       .replace(/[_-]+/g, " ")
       .replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
@@ -1256,10 +1224,10 @@ class LifeOSHomeView extends ItemView {
       },
       library: {
         title: "Library shelf",
-        description: "Typed library notes, including finished books and sources. Samples excluded.",
-        types: ["book"],
+        description: "Typed library notes: courses, notes, and clippings, including finished ones. Samples excluded.",
+        types: ["course", "note", "clipping"],
         icon: "library",
-        empty: "No typed library notes yet. Add a book or source with a type property.",
+        empty: "No typed library notes yet. Add a course, note, or clipping from the Library actions.",
       },
     };
     const collection = collections[this.activeScreen];
@@ -1365,7 +1333,6 @@ class LifeOSHomeView extends ItemView {
     const config = this.getConfigFrontmatter();
     const paths = this.getConfiguredFolders(config);
     const questionKeys = this.getQuestionKeys(config);
-    const habitKeys = this.getHabitKeys(config);
     const days = [];
     for (let offset = 6; offset >= 0; offset -= 1) {
       const day = moment().clone().subtract(offset, "days");
@@ -1374,13 +1341,12 @@ class LifeOSHomeView extends ItemView {
       const raw = this.getFrontmatter(file);
       const excluded = !this.includeExamples && this.isExample(raw);
       const data = excluded ? {} : raw;
-      const metrics = this.summarizeDailyProperties(data, questionKeys, habitKeys);
+      const metrics = this.summarizeDailyProperties(data, questionKeys);
       days.push({
         label: day.format("ddd"),
         exists: file instanceof TFile && !excluded,
         recorded: metrics.recorded,
-        habitsDone: metrics.habitsDone,
-        total: questionKeys.length + habitKeys.length,
+        total: questionKeys.length,
       });
     }
     const activeDays = days.filter((day) => day.exists).length;
@@ -1692,19 +1658,15 @@ class LifeOSHomeView extends ItemView {
     };
   }
 
-  summarizeDailyProperties(data, questionKeys, habitKeys) {
+  summarizeDailyProperties(data, questionKeys) {
     const questionsRecorded = questionKeys.filter(
       (key) => ratingState(data[key]).state === "recorded"
     ).length;
-    const habitStates = habitKeys.map((key) => habitState(data[key]));
-    const habitsRecorded = habitStates.filter(
-      (state) => state === "done" || state === "unchecked"
-    ).length;
+    const highlight = typeof data.highlight_of_the_day === "string" && data.highlight_of_the_day.trim() !== "";
     return {
       questionsRecorded,
-      habitsRecorded,
-      habitsDone: habitStates.filter((state) => state === "done").length,
-      recorded: questionsRecorded + habitsRecorded,
+      highlight,
+      recorded: questionsRecorded,
     };
   }
 
@@ -1712,12 +1674,6 @@ class LifeOSHomeView extends ItemView {
     const questions = Array.isArray(config.questions) ? config.questions : [];
     return questions
       .map((question) => String(question?.key || question || ""))
-      .filter(Boolean);
-  }
-
-  getHabitKeys(config) {
-    return (Array.isArray(config.habits) ? config.habits : [])
-      .map((habit) => String(habit || ""))
       .filter(Boolean);
   }
 

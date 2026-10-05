@@ -14,11 +14,11 @@ Video: 5:52 to 7:53. "Without exaggeration, the single highest leverage day on m
 - `Templates/Personal Retreat.md`, auto-applied to any note created in `02 Retreats/` (Templater folder template).
 - File name convention **`YYYY-QN Personal Retreat`**. The Compass dashboard finds the current quarter's retreat by that name and date (19:22) and draws the wheel from the `wheel_*` number properties. Fallback: most recent retreat.
 - The template links the previous retreat and the same quarter last year, so you can put them side by side (7:10).
-- Sections 2 and 3 render live: daily questions for the quarter, habits, wins list, and the radar chart of your own `wheel_*` values.
+- Sections 2 and 3 render live: daily questions for the quarter, wins list, and the radar chart of your `wheel_*` values on the four life dimensions (Business, Family, Growth, Health).
 - Section 5's intentions are embedded into the quarterly note and from there into every weekly note. Write them once.
 
-## Wheel of life areas (edit to taste)
-`wheel_faith`, `wheel_family`, `wheel_marriage`, `wheel_friends`, `wheel_health`, `wheel_career`, `wheel_finances`, `wheel_growth`. Rename in the template; the chart discovers whatever `wheel_*` exists.
+## Wheel of life: the four life dimensions
+Compass scores the four ICOR life dimensions: `wheel_business`, `wheel_family`, `wheel_growth`, `wheel_health` (Mike's video uses eight areas such as faith, marriage, friends, career, finances). Change them in `wheel_areas` and `dimensions` in [[Compass Config]]; the chart discovers whatever `wheel_*` exists and needs at least 3. Older retreat notes keep their old keys. See [[06 Workflow - ICOR, Focus, and Library]].
 
 ## Practices
 - Block a whole day. No cabin required (7:40).
