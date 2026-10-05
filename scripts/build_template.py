@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Build a clean, distributable copy of this vault from the live one.
 
-    python3 scripts/build_template.py --out ../life-os-releases --name Candidate --version 1.1.0 --zip
-    python3 scripts/build_template.py --out ../life-os-releases --name CandidateLite --version 1.1.0 --without-reading
+    python3 scripts/build_template.py --out ../life-os-releases --name Candidate --version 2.0.0 --zip
+    python3 scripts/build_template.py --out ../life-os-releases --name CandidateLite --version 2.0.0 --without-reading
 
 Never writes into the live vault. Steps: copy with drop rules, keep only example-tagged notes in
 user folders, reset defaults, strip machine state from plugin settings, trim the transcript, add

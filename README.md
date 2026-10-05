@@ -7,7 +7,7 @@
 
 Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
 
-**Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 1.1.0, subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
+**Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 2.0.0 (breaking: habit tracking removed, library restructured; see `CHANGELOG.md`), subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
 
 ## Watch the demo
 
@@ -113,8 +113,8 @@ The template is built from the maintainer's live vault, never edited in the buil
 
 ```bash
 python3 scripts/verify_release_safety.py
-python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-1.1.0-candidate --version 1.1.0 --zip
-python3 scripts/verify_template.py ../life-os-releases/LifeOS-1.1.0-candidate
+python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-2.0.0-candidate --version 2.0.0 --zip
+python3 scripts/verify_template.py ../life-os-releases/LifeOS-2.0.0-candidate
 ```
 
 `build_template.py` copies with drop rules, keeps only `example`-tagged notes in user folders, resets defaults, strips machine state from plugin settings, adds the version and a one-page workspace, then verifies and zips. `verify_template.py` exits 1 on any failure: forbidden strings (names, paths, keys, certificates, em dashes), plugin settings (Local REST API exactly `{"enableInsecureServer": true}`, Agent Client with no sessions and auto-allow off, Omnisearch HTTP server off, QuickAdd online features off), plugin folders with LICENSE, notices matching manifests, referenced paths and wikilinks resolving, `Meta/views/*.js` syntax under Node, and total size under 20 MB. The `verify` workflow runs it on every push and pull request. Maintainer checklist: `scripts/RELEASE.md`. Changes: `CHANGELOG.md`.

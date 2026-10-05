@@ -2,7 +2,9 @@
 
 Format: Added, Changed, Templates (manual merge notes), Plugins, Breaking. Semver: major = path or property rename, minor = new widget or workflow, patch = docs and fixes.
 
-## Unreleased
+## 2.0.0 (candidate, not yet released)
+
+Major version because of the breaking changes below (habit properties removed, `07 Library/Book Notes` moved). The 1.1.0 candidate was never published; its application and release-hardening changes listed in this section ship as part of 2.0.0.
 
 ### ICOR restructure: focus, project health, life dimensions, library
 Added
