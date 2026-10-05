@@ -2,7 +2,27 @@
 cssclasses:
   - lifeos-dashboard
 ---
-Everything below is generated from the notes you already write. Change the daily note template, the retreat note, or the config and this page follows. You never touch this code.
+```dataviewjs
+await dv.view("Meta/views/focus");
+```
+
+```tasks
+not done
+(due before tomorrow) OR (scheduled before tomorrow)
+path does not include 09 Reading/Reading Plan
+path does not include Templates
+sort by due
+short mode
+limit 10
+```
+
+> [!warning] Project health
+> ```dataviewjs
+> await dv.view("Meta/views/projects", { mode: "warnings" });
+> ```
+
+---
+Above the line is focus mode: today's highlight, today's tasks, stalled projects. Below it is context, generated from the notes you already write; change the daily note template, the retreat note, or the config and this page follows.
 
 ```dataviewjs
 await dv.view("Meta/views/quicklinks");
@@ -11,7 +31,8 @@ await dv.view("Meta/views/quicklinks");
 > [!theme] Life theme
 > ![[Life Theme#Theme]]
 
-## Wheel of life (this quarter's retreat)
+## Life dimensions (this quarter's retreat)
+Business, Family, Growth, Health: the wheel of life scored at the last personal retreat.
 ```dataviewjs
 await dv.view("Meta/views/wheel");
 ```
@@ -20,11 +41,6 @@ await dv.view("Meta/views/wheel");
 Lines and averages of every `dq_*` property in the daily notes. Toggle questions, pick a time frame.
 ```dataviewjs
 await dv.view("Meta/views/dailyquestions", { days: 30 });
-```
-
-## Habits
-```dataviewjs
-await dv.view("Meta/views/habits", { days: 21 });
 ```
 
 ## Boards
@@ -53,7 +69,7 @@ viewType: right-pane
 ```
 
 ## Related dashboards
-- [[Habit Canvas]]
+- [[Library]]
 - [[Daily Questions]]
 - [[Task Dashboard]]
 - [[Projects Dashboard]]

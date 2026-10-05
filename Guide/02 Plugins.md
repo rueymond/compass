@@ -4,7 +4,7 @@
 | **QuickAdd** | `quickadd` | Capture journal entries, wins, gratitude to the daily note; tasks to the master list; ideas to the Kanban backlogs (4:40, 17:51) | `.obsidian/plugins/quickadd/data.json` (8 capture choices, all registered as commands) |
 | **Periodic Notes** | `periodic-notes` | Daily, weekly, quarterly notes with their own templates and folders (9:16) | `.obsidian/plugins/periodic-notes/data.json` |
 | **Obsidian Tasks** | `obsidian-tasks-plugin` | Inline tasks, `tasks` query blocks on dashboards, people, projects, and the Bible reading callout (14:37) | `.obsidian/plugins/obsidian-tasks-plugin/data.json` |
-| **Dataview** (DataviewJS) | `dataview` | Habit dashboard, daily questions widget, wheel of life, projects dashboard (10:47, 18:49) | `.obsidian/plugins/dataview/data.json`, JS enabled |
+| **Dataview** (DataviewJS) | `dataview` | Focus widget, daily questions widget, wheel of life, projects dashboard with health flags, library dashboard (18:49) | `.obsidian/plugins/dataview/data.json`, JS enabled |
 | **Kanban** | `obsidian-kanban` | One board per writing type (17:44) | Boards in `06 Writing/*/… Board.md` |
 | **Bases** (core, Obsidian 1.9+) | built-in | Mike's "on this day" query in the daily note (5:01) | This vault uses a DataviewJS block for "on this day" so the daily note works on any version; a Bases equivalent is in the guide below |
 
@@ -76,7 +76,9 @@ To update a plugin later use Settings → Community plugins → Check for update
 | 🎬 New video script | `06 Writing/YouTube Scripts/{{VALUE}}.md` from `Templates/YouTube Script.md` | Prompt for the title, create and open the script; an existing note is never overwritten | |
 | 📰 New article | `06 Writing/Articles/{{VALUE}}.md` from `Templates/Article.md` | Prompt for the title, create and open the draft; an existing note is never overwritten | |
 | 🎓 New course lesson | `06 Writing/Course Content/{{VALUE}}.md` from `Templates/Course Lesson.md` | Prompt for the title, create and open the lesson; an existing note is never overwritten | |
-| 📚 New book note | `07 Library/Book Notes/{{VALUE}}.md` from `Templates/Book Note.md` | Prompt for the title, create and open the book note; an existing note is never overwritten | |
+| 🎓 New library course | `07 Library/Course/{{VALUE}}.md` from `Templates/Library Course.md` | Prompt for the course title, create and open the note; an existing note is never overwritten | |
+| 📚 New library note | `07 Library/Notes/{{VALUE}}.md` from `Templates/Library Note.md` | Prompt for the title of the book, article, or talk, create and open the note; an existing note is never overwritten | |
+| ✂️ New clipping | `07 Library/Clippings/{{VALUE}}.md` from `Templates/Library Clipping.md` | Prompt for the title, create and open the clipping; an existing note is never overwritten | |
 | 📖 New study note | `09 Reading/Study Notes/{{VALUE}}.md` from `Templates/Study Note.md` | Prompt for the title, create and open the study note; an existing note is never overwritten | |
 
 The dashboard's capture buttons find these choices by name at click time, so you can rename ids freely.

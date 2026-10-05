@@ -37,8 +37,8 @@ Ground rules: (1) Read before you write; never edit a note you have not read in 
 
 Job: my weekly review.
 1. active_file_get_path. If the open note is not 01 Journal/Weekly/<gggg-Www>.md, use the current week. vault_read the weekly note; take "## Weekly intentions" and the "Days:" line, which lists the seven daily note names.
-2. vault_read each daily note that exists (skip missing days and say which were missing). From each, collect: dq_* values, habit_* values, every line under "## Journal", "## Wins", "## Gratitude". Ignore notes tagged example unless every note is an example; then say the week is seed data and stop.
-3. Compute per question: average, lowest day, highest day. Per habit: days done out of days tracked. Do this from the values you read; do not estimate.
+2. vault_read each daily note that exists (skip missing days and say which were missing). From each, collect: dq_* values, highlight_of_the_day, every line under "## Journal", "## Wins", "## Gratitude". Ignore notes tagged example unless every note is an example; then say the week is seed data and stop.
+3. Compute per question: average, lowest day, highest day. List each day's highlight as written (empty days stay empty). Do this from the values you read; do not estimate.
 4. Check each weekly intention against the journal and wins: quote the line that shows it happened or say "no evidence in the notes" (not "failed").
 5. Draft two lists in my own words (quote or lightly compress my sentences, keep first person): "What went well" (3 to 5 bullets, each ending with the source day in brackets) and "What did not" (2 to 4 bullets, same). Add one line "Pattern to look at:" only if the same theme appears on three or more days.
 6. Show the numbers table and both drafts. Ask: "Write both lists into the weekly note under ### What went well and ### What did not?". On yes, vault_patch each heading, inserting the bullets under it, leaving the dataviewjs and dataview blocks untouched. Never write into the daily notes.

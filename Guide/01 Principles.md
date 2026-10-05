@@ -32,6 +32,7 @@ Quoted or closely paraphrased from Mike Schmitz, with timestamps.
 - Now: checkbox properties in the daily note for the habits tracked **this season**. 15 seconds at the end of the day. "That's the entire data entry layer."
 - A DataviewJS dashboard reads every daily note and shows streaks, gaps, trends. Same visualization the apps gave, but next to the journal entry: the difference between "I missed 3 days" and "I missed 3 days because that's the week my dad was in the hospital."
 - "Tracking honestly is more important than tracking perfectly." A tracker is only useful if it changes behaviour, and putting it in the place you already open every morning is "the single biggest behavior change lever."
+- **Compass departs from the video here.** Habit tracking was removed to keep the daily note small. The principle that survives is the last one: put the signal where you already look. Compass does that with one `highlight_of_the_day` per daily note, shown first on the Compass Dashboard. See [[06 Workflow - ICOR, Focus, and Library]].
 
 ## 6. Bible reading: the cleanest example of one-vault linking (11:51 to 14:11)
 - Two representations: **note as chapter** (for the daily reading plan) and **note as verse** (30,000+ atomic notes).

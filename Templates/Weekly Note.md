@@ -15,10 +15,10 @@ Days: <%* const s = moment(tp.file.title, "gggg-[W]ww").startOf("week"); const p
 > ![[01 Journal/Quarterly/<% moment(tp.file.title, "gggg-[W]ww").format("YYYY-[Q]Q") %>#Quarterly intentions]]
 
 ## Weekly intentions
-The 3 things that, if done this week, move the quarterly intentions forward.
-1. 
-2. 
-3. 
+The 3 things that, if done this week, move the quarterly intentions forward. Tag each with the life dimension it serves (business, family, growth, health); a week with all three in one dimension is a choice, so make it on purpose.
+1. (dimension: ) 
+2. (dimension: ) 
+3. (dimension: ) 
 
 ## Ideal week check
 Look at [[Ideal Week]]. Where does the time for the intentions above actually live this week? Adjust the calendar now, not on Thursday.
@@ -42,7 +42,7 @@ viewType: right-pane
 ```
 
 ## Weekly review
-Done at the end of the week. Effort scores and habit hits per day, from the daily notes.
+Done at the end of the week. Effort scores and the highlight of each day, from the daily notes.
 ```dataviewjs
 await dv.view("Meta/views/week", { week: dv.current().file.name });
 ```

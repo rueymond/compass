@@ -2,7 +2,7 @@
 type: prompt
 purpose: "Walk a new member through setting up the vault as their own, in the order of the Setup dashboard."
 when: "First session in a fresh copy of the template."
-writes: "Meta/Compass Config.md (birthdate, questions, habits, wheel_areas), 03 Planning texts, deletion of example notes; each only on explicit yes"
+writes: "Meta/Compass Config.md (birthdate, questions, wheel_areas, dimensions), 03 Planning texts, deletion of example notes; each only on explicit yes"
 risk: "delete"
 inputs:
   - "00 Dashboards/Setup.md"
@@ -44,7 +44,7 @@ Step 0, connection: confirm you can call the obsidian MCP tools (try vault_read 
 Step 1, plugins: open_file 00 Dashboards/Setup.md and ask me what the status checklist shows. You cannot check .obsidian; take my word.
 Step 2, config: vault_read Meta/Compass Config.md. Ask for my birth date (ISO) and life expectancy. Show the two frontmatter changes; on yes, vault_patch the keys. Do not change folders or prefixes.
 Step 3, life theme and values: vault_read 03 Planning/Life Theme.md and Core Values.md. Ask me for my theme in my own words (one to three sentences) and my values (three to seven, each with one line). Show the exact replacement of the template text under "## Theme" and "## Values"; on yes, vault_patch those sections only. Leave the roles table for later unless I want it now.
-Step 4, questions, habits, wheel areas: from Meta/Compass Config.md show the questions list (key and text), the habits list, and the wheel_areas list. Ask what to reword, rename, drop, or add (keys keep their prefix, lowercase, no spaces; 3 to 5 habits). Show the exact new lists; on yes, vault_patch the three frontmatter keys. Say that existing daily notes keep their old keys and that new notes use the new lists.
+Step 4, questions and life dimensions: from Meta/Compass Config.md show the questions list (key and text), the wheel_areas list, and the dimensions list (the four ICOR dimensions Business, Family, Growth, Health with their meanings). Ask what to reword, rename, drop, or add (keys keep their prefix, lowercase, no spaces; keep wheel_areas and dimensions in step, at least 3). Show the exact new lists; on yes, vault_patch the three frontmatter keys. Say that existing daily notes keep their old keys and that new notes use the new lists.
 Step 5, first daily note: command_execute quickadd:choice:lifeos-daily. Confirm the note was created with the new properties (vault_read it). Tell me: tonight, press the Daily Questions hotkey (Ctrl or Cmd+Shift+Q) with this note open, or run Prompts/02 End of Day Coaching.
 Step 6, example data: find notes tagged example. List them. Explain that dashboards will show empty states without them and that is fine. Ask: delete now, or after a week of real data? On "delete now", vault_delete each file one at a time after listing it (trash, recoverable). Also offer to tick the Setup task in 08 Tasks/Tasks.md.
 Step 7, other agents: if I use Codex or Gemini CLI, point me to AGENTS.md, GEMINI.md, and Guide/19 for the MCP setup, and say the prompt library works the same from those agents.

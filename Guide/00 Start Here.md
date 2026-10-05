@@ -9,7 +9,7 @@ Seven workflows, one vault, dashboards on top:
 | 1 | Journaling with Daily Questions | `01 Journal/Daily`, `Templates/Daily Note.md`, `Templates/Daily Questions Prompt.md`, questions in `Meta/Compass Config.md` | [[03 Workflow - Journaling and Daily Questions]] |
 | 2 | Quarterly personal retreat | `02 Retreats`, `Templates/Personal Retreat.md` | [[04 Workflow - Personal Retreat]] |
 | 3 | Multi-scale planning | `01 Journal/{Daily,Weekly,Quarterly}`, `03 Planning` | [[05 Workflow - Multi-Scale Planning]] |
-| 4 | Habit tracking | `habit_*` properties in the daily note, `00 Dashboards/Habit Canvas.md` | [[06 Workflow - Habit Tracking]] |
+| 4 | ICOR: highlight of the day, project health, life dimensions, library | `highlight_of_the_day` in the daily note, `00 Dashboards/Compass Dashboard.md`, `Projects Dashboard.md`, `Library.md`, `07 Library/{Course,Notes,Clippings}` | [[06 Workflow - ICOR, Focus, and Library]] |
 | 5 | Daily reading (Bible as the worked example) | `09 Reading` | [[07 Workflow - Daily Reading]] |
 | 6 | Task management | `08 Tasks/Tasks.md`, `04 Projects`, `05 People`, `00 Dashboards/Task Dashboard.md` | [[08 Workflow - Task Management]] |
 | 7 | Writing | `06 Writing/*` with Kanban boards | [[09 Workflow - Writing]] |

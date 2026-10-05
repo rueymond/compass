@@ -17,7 +17,7 @@ tags:
 
 ## Key Recent Facts
 
-- Dashboards read properties by prefix (`dq_`, `habit_`, `wheel_`); never rename them.
+- Dashboards read properties by prefix (`dq_`, `wheel_`); never rename them.
 - `wiki/` is the only folder the plugin writes to; life workflows are edited in Obsidian or via Agent Client with approval.
 
 ## Recent Changes

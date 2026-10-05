@@ -7,7 +7,7 @@ setup_backup: false
 tags:
   - setup
 ---
-A vault that asks you one honest question set every night. Everything else (planning, habits, tasks, writing, an AI assistant) is layered on top of that, one layer at a time. Compass is based on Mike Schmitz's "How I Run My Whole Life Out of Obsidian"; not affiliated with Practical PKM.
+A vault that asks you one honest question set every night. Everything else (planning, a daily highlight, tasks, writing, an AI assistant) is layered on top of that, one layer at a time. Compass is based on Mike Schmitz's "How I Run My Whole Life Out of Obsidian"; not affiliated with Practical PKM.
 
 ## Step A: turn plugins on (do this first)
 When you opened this folder, Obsidian showed a box about **Restricted mode**. Click **Turn off**. If you closed it: Settings → Community plugins → **Turn off Restricted mode**. You will see ten community plugins plus the first-party Life OS plugin, already installed. Then press Ctrl/Cmd+P and run **Reload app without saving**. Life OS opens automatically after reload.
@@ -25,11 +25,11 @@ Four items are self-declared because no script can see them (your Claude login, 
 2. [[Compass Config]]: set `birthdate`.
 3. [[Life Theme]]: one draft sentence under `## Theme` (it shows in every daily note; refine it at the first retreat).
 4. Open [[Compass Dashboard]]; it renders from the example data.
-5. Tonight: Ctrl/Cmd+Shift+D creates or opens today's note (with its questions and habits filled in); Ctrl/Cmd+Shift+Q asks the questions. Answer 1 to 10, write one line under `## Journal`. Stop there.
+5. Tonight: Ctrl/Cmd+Shift+D creates or opens today's note (with its questions and an empty highlight_of_the_day filled in); Ctrl/Cmd+Shift+Q asks the questions. Answer 1 to 10, write one line under `## Journal`. Stop there.
 
 ## This week
 - Every morning Ctrl/Cmd+Shift+D, every night Ctrl/Cmd+Shift+Q.
-- Day 3: open [[Compass Config]] and reword one question you did not mean. Keep 3 to 5 habits.
+- Day 3: open [[Compass Config]] and reword one question you did not mean. Check the four life dimensions read right to you.
 - Day 7: look at [[Daily Questions]]. Change nothing. Fill in [[Ideal Week]] roughly and delete its `example` property. Decide the reading module: fill [[Reading Plan]] or delete `09 Reading`.
 
 ## This month

@@ -11,6 +11,8 @@ tags:
 ---
 Tag tasks anywhere in the vault with `#project/<% tp.file.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") %>` and they roll up here. Every task stays one click from the context that explains why it exists.
 
+Set `area` to the life dimension this project serves: business, family, growth, or health. Keep at least one open task (here or tagged elsewhere); a project with none is flagged 🔴 on the [[Projects Dashboard]].
+
 ```agent
 type: button
 text: "Kick off this project"

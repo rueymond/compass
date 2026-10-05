@@ -1,14 +1,18 @@
 ---
-type: book
+type: note
+kind: book
 author: 
 year: 
 rating: 
-status: reading
+status: active
 started: <% tp.date.now("YYYY-MM-DD") %>
 finished: 
+source: 
 tags:
-  - book
+  - library/note
 ---
+> `kind` is book, article, podcast, video, or paper. `status` is active while you are still taking notes, done when finished.
+
 ## Summary in three sentences
 
 

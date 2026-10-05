@@ -5,7 +5,7 @@
 
 *Run your whole life out of Obsidian: one honest question set a night, everything else follows.*
 
-Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, habit tracking, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
+Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
 
 **Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 1.1.0, subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
 
@@ -34,14 +34,14 @@ Notes tagged `example` are seed data so the dashboards render on first open; the
 ## What is inside
 
 ```
-00 Dashboards/   Setup, Compass Dashboard, Habit Canvas, Daily Questions, Task, Projects, Boards, Assistant
+00 Dashboards/   Setup, Compass Dashboard (focus mode), Daily Questions, Task, Projects, Library, Boards, Assistant
 01 Journal/      Daily, Weekly, Quarterly periodic notes
 02 Retreats/     YYYY-QN Personal Retreat notes (wheel of life in their properties)
 03 Planning/     Life Theme, Core Values (+ roles), Ideal Week
 04 Projects/     project notes (#project/<slug> tasks) and the Projects Board
 05 People/       people notes (#p/<slug> tasks, #discuss roll-ups)
 06 Writing/      Newsletters, YouTube Scripts, Articles, Course Content, each with a Kanban board
-07 Library/      Book Notes (quotes with block ids for embedding)
+07 Library/      Course, Notes (quotes with block ids for embedding), Clippings
 08 Tasks/        Tasks.md, the master list you capture to and never read
 09 Reading/      Reading Plan, Chapters, Verses, Study Notes, Topics (Bible is the worked example)
 Prompts/         16 prompts for your AI agent, one note per recurring job
@@ -58,7 +58,7 @@ AGENTS.md        rules and folder map for any AI agent; CLAUDE.md and GEMINI.md 
 .mcp.example.json  how to point an agent at Obsidian's MCP server (Local REST API)
 ```
 
-`Meta/Compass Config.md` is the single config: questions, habits, wheel areas, folders, prefixes, birthdate. Dashboards discover `dq_*`, `habit_*`, and `wheel_*` properties by prefix, so changing the lists there changes the whole vault.
+`Meta/Compass Config.md` is the single config: questions, life dimensions (wheel areas), folders, prefixes, birthdate. Dashboards discover `dq_*` and `wheel_*` properties by prefix, so changing the lists there changes the whole vault.
 
 ## The seven workflows
 
@@ -67,7 +67,7 @@ AGENTS.md        rules and folder map for any AI agent; CLAUDE.md and GEMINI.md 
 | 1 | Journaling with Daily Questions | `01 Journal/Daily`, `Templates/Daily Note.md`, `Templates/Daily Questions Prompt.md`, questions in `Meta/Compass Config.md` | `Guide/03 Workflow - Journaling and Daily Questions.md` |
 | 2 | Quarterly personal retreat | `02 Retreats`, `Templates/Personal Retreat.md` | `Guide/04 Workflow - Personal Retreat.md` |
 | 3 | Multi-scale planning | `01 Journal/{Daily,Weekly,Quarterly}`, `03 Planning` | `Guide/05 Workflow - Multi-Scale Planning.md` |
-| 4 | Habit tracking | `habit_*` properties in the daily note, `00 Dashboards/Habit Canvas.md` | `Guide/06 Workflow - Habit Tracking.md` |
+| 4 | ICOR: highlight of the day, project health, life dimensions, library | `highlight_of_the_day` in the daily note, Compass, Projects, and Library dashboards, `07 Library/{Course,Notes,Clippings}` | `Guide/06 Workflow - ICOR, Focus, and Library.md` |
 | 5 | Daily reading (Bible as the worked example) | `09 Reading` | `Guide/07 Workflow - Daily Reading.md` |
 | 6 | Task management | `08 Tasks/Tasks.md`, `04 Projects`, `05 People`, `00 Dashboards/Task Dashboard.md` | `Guide/08 Workflow - Task Management.md` |
 | 7 | Writing | `06 Writing/*` with Kanban boards | `Guide/09 Workflow - Writing.md` |

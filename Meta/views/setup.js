@@ -28,7 +28,7 @@ add(1, "Life theme written", theme.length > 0 && !theme.includes("Replace this l
 const values = await readText("03 Planning/Core Values.md");
 add(1, "Core values written", values.length > 0 && !/\*\*Value one\*\*/.test(values), "[[Core Values]]");
 add(1, "Ideal week is yours (example property removed)", !((dv.page("03 Planning/Ideal Week") || {}).example === true), "[[Ideal Week]]", "fill the grid, then delete the example property");
-add(1, "Questions, habits, wheel areas reviewed", Array.isArray(cfg.questions) && cfg.questions.length > 0 && Array.isArray(cfg.habits) && cfg.habits.length <= 5, "[[Compass Config]]", Array.isArray(cfg.habits) && cfg.habits.length > 5 ? "more than 5 habits; keep 3 to 5 per season" : "");
+add(1, "Questions and life dimensions reviewed", Array.isArray(cfg.questions) && cfg.questions.length > 0 && Array.isArray(cfg.wheel_areas) && cfg.wheel_areas.length >= 3, "[[Compass Config]]", Array.isArray(cfg.wheel_areas) && cfg.wheel_areas.length < 3 ? "the wheel needs at least 3 areas" : "");
 const examples = dv.pages("#example").length;
 add(1, "Example notes deleted", examples === 0, "[[16 Onboarding Assistant]] step 6, or delete notes tagged example", examples ? `${examples} example notes remain` : "");
 

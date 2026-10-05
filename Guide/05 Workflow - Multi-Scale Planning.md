@@ -21,10 +21,11 @@ No annual plan, by design (8:46).
 ## Weekly note
 - Three weekly intentions, chosen against the quarterly ones.
 - Tasks due this week (Tasks query).
-- Friday review: a table of each day's effort scores and habit hits (`Meta/views/week.js`) plus wins pulled from the daily notes.
+- Friday review: a table of each day's effort scores and highlight of the day (`Meta/views/week.js`) plus wins pulled from the daily notes.
+- Each weekly intention names the life dimension it serves; the quarterly note has one line per dimension. See [[06 Workflow - ICOR, Focus, and Library]].
 
 ## Quarterly note
-- Focus area from the wheel.
+- Focus dimension from the wheel, one "good enough" line per dimension, projects grouped by `area`.
 - Projects with `quarter: YYYY-QN` and status not done.
 - List of the quarter's weekly notes.
 - Daily questions chart locked to the quarter's dates.

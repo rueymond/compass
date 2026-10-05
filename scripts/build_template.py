@@ -113,7 +113,8 @@ def copy_tree(live, out):
                         json.dump(settings, target, indent=2)
                 continue
             if any(rel.startswith(u) for u in USER_CONTENT):
-                if not rel.endswith(".md") or not has_example_tag(os.path.join(root, f)):
+                # .gitkeep keeps empty capture folders (07 Library/Course, Clippings) in the release.
+                if f != ".gitkeep" and (not rel.endswith(".md") or not has_example_tag(os.path.join(root, f))):
                     continue
             dst = os.path.join(out, rel)
             os.makedirs(os.path.dirname(dst), exist_ok=True)

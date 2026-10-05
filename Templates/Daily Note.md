@@ -1,12 +1,17 @@
 ---
 date: <% tp.date.now("YYYY-MM-DD", 0, tp.file.title, "YYYY-MM-DD") %>
+highlight_of_the_day: 
+dimension: 
 tags:
   - daily
-<%* const _cf = app.vault.getAbstractFileByPath("Meta/Compass Config.md"); const _cfg = _cf ? (app.metadataCache.getFileCache(_cf)?.frontmatter ?? {}) : {}; const _qs = Array.isArray(_cfg.questions) && _cfg.questions.length ? _cfg.questions.map(q => (q && q.key) ? q.key : q).filter(Boolean) : ["dq_goals","dq_progress","dq_meaning","dq_happy","dq_relationships","dq_engaged"]; const _hs = Array.isArray(_cfg.habits) && _cfg.habits.length ? _cfg.habits : ["habit_journal","habit_exercise","habit_reading"]; tR += _qs.map(k => k + ": ").join("\n") + "\n" + _hs.map(k => k + ": false").join("\n"); %>
+<%* const _cf = app.vault.getAbstractFileByPath("Meta/Compass Config.md"); const _cfg = _cf ? (app.metadataCache.getFileCache(_cf)?.frontmatter ?? {}) : {}; const _qs = Array.isArray(_cfg.questions) && _cfg.questions.length ? _cfg.questions.map(q => (q && q.key) ? q.key : q).filter(Boolean) : ["dq_goals","dq_progress","dq_meaning","dq_happy","dq_relationships","dq_engaged"]; tR += _qs.map(k => k + ": ").join("\n"); %>
 ---
 « [[01 Journal/Daily/<% tp.date.now("YYYY-MM-DD", -1, tp.file.title, "YYYY-MM-DD") %>|Yesterday]] · [[01 Journal/Weekly/<% tp.date.now("gggg-[W]ww", 0, tp.file.title, "YYYY-MM-DD") %>|Week]] · [[01 Journal/Quarterly/<% tp.date.now("YYYY-[Q]Q", 0, tp.file.title, "YYYY-MM-DD") %>|Quarter]] · [[Compass Dashboard]] · [[01 Journal/Daily/<% tp.date.now("YYYY-MM-DD", 1, tp.file.title, "YYYY-MM-DD") %>|Tomorrow]] »
 
 # <% tp.date.now("dddd, MMMM D, YYYY", 0, tp.file.title, "YYYY-MM-DD") %>
+
+> [!important] Highlight of the day
+> `$= dv.current()?.highlight_of_the_day ? "**" + dv.current().highlight_of_the_day + "**" + (dv.current().dimension ? " · " + dv.current().dimension : "") : "Not set. Write the one thing that would make today a good day in the highlight_of_the_day property above (and optionally its dimension: business, family, growth, or health)."`
 
 > [!theme]- Life theme
 > ![[Life Theme#Theme]]
@@ -45,7 +50,7 @@ short mode
 
 
 ## Daily questions
-Tonight: press the Daily Questions hotkey (Ctrl/Cmd+Shift+Q) or run the command **Templater: Insert Templates/Daily Questions Prompt.md**. It asks the questions from [[Compass Config]] and writes the `dq_*` and `habit_*` properties above. Rate effort, not results, 1 to 10.
+Tonight: press the Daily Questions hotkey (Ctrl/Cmd+Shift+Q) or run the command **Templater: Insert Templates/Daily Questions Prompt.md**. It asks the questions from [[Compass Config]] and writes the `dq_*` properties above. Rate effort, not results, 1 to 10.
 
 ## On this day
 ```dataviewjs

@@ -1,11 +1,11 @@
 ---
 type: prompt
-purpose: "Walk through the daily questions and habits as a coach, then record the scores."
+purpose: "Walk through the daily questions as a coach, look back at the highlight of the day, then record the scores."
 when: "End of day, with today's daily note open."
-writes: "dq_* and habit_* properties in today's note, with approval per batch; optional lines under Wins or Gratitude"
+writes: "dq_* properties in today's note, with approval per batch; optional lines under Wins or Gratitude"
 risk: "edit"
 inputs:
-  - "today's daily note (Journal, Wins, Gratitude, current dq_* and habit_* values)"
+  - "today's daily note (Journal, Wins, Gratitude, current dq_* values and highlight_of_the_day)"
   - "yesterday's note"
   - "the questions list in Meta/Compass Config.md"
 tools:
@@ -40,7 +40,7 @@ Job: coach me through tonight's daily questions (Marshall Goldsmith, "Did I do m
 2. List the dq_* properties exactly as they appear in the frontmatter. The wording for each key is in the questions list of Meta/Compass Config.md; vault_read it. Do not invent questions. Note which already have values.
 3. Read "## Journal", "## Wins", "## Gratitude". Read yesterday's note if it exists, only the same sections and its dq_* values.
 4. Ask the questions ONE AT A TIME. For each: state the question in "Did I do my best to ..." form, mention one concrete thing from today's journal or wins if relevant, and wait for my number. If I give a reason instead of a number, reflect it back in one sentence and ask for the number. Never suggest a number. Never compare to yesterday unless I ask. Accept only integers 1 to 10.
-5. After the questions, ask yes or no for each habit_* property; one message with all habits is fine.
+5. After the questions, if highlight_of_the_day is set, quote it and ask in one sentence what happened with it. Do not score it and do not write anything for it; if it is empty, skip this step.
 6. Show the complete set of key: value pairs and ask "Write these to today's note?". On yes, write each value with vault_patch targeting the frontmatter key. If vault_patch cannot target frontmatter, tell me and run command_execute with id templater-obsidian:Templates/Daily Questions Prompt.md so I can type the same numbers into the Obsidian dialog.
 7. If during the conversation I mention a win or something I am grateful for, offer to vault_append it under "## Wins" or "## Gratitude" as "- <my words>". Only with a yes.
 8. Close with one sentence quoting my own words from tonight, no advice, no score commentary.

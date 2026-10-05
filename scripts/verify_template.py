@@ -179,11 +179,11 @@ def main():
             check("js syntax %s" % rel, r.returncode == 0, r.stderr[-200:])
     # templater property generators must produce valid property lines (config path and fallback)
     sim = r"""
-const fs=require('fs');const cfg={questions:[{key:'dq_a',text:'a'},{key:'dq_b',text:'b'}],habits:['habit_x'],wheel_areas:['wheel_y','wheel_z']};
+const fs=require('fs');const cfg={questions:[{key:'dq_a',text:'a'},{key:'dq_b',text:'b'}],wheel_areas:['wheel_y','wheel_z']};
 const mk=c=>({vault:{getAbstractFileByPath:()=>c?{}:null},metadataCache:{getFileCache:()=>c?{frontmatter:c}:null}});
 for(const p of process.argv.slice(1)){const s=fs.readFileSync(p,'utf8');const m=s.match(/<%\*([\s\S]*?)%>/);if(!m){console.log('NOBLOCK '+p);process.exit(2)}
  if(m[1].includes('\n')){console.log('NEWLINE '+p);process.exit(3)}
- for(const c of [cfg,null]){const out=new Function('app','tR',m[1]+'; return tR;')(mk(c),'');if(!out.split('\n').every(l=>/^(dq_|habit_|wheel_)\w+: (false)?$/.test(l))){console.log('BAD '+p+' '+JSON.stringify(out));process.exit(4)}}}
+ for(const c of [cfg,null]){const out=new Function('app','tR',m[1]+'; return tR;')(mk(c),'');if(!out.split('\n').every(l=>/^(dq_|wheel_)\w+: $/.test(l))){console.log('BAD '+p+' '+JSON.stringify(out));process.exit(4)}}}
 console.log('ok');"""
     tpls = [os.path.join(root, t) for t in ["Templates/Daily Note.md", "Templates/Personal Retreat.md"] if exists(t)]
     if tpls:

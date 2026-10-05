@@ -44,8 +44,16 @@
       "template": "Templates/Course Lesson.md"
     },
     {
-      "folder": "07 Library/Book Notes",
-      "template": "Templates/Book Note.md"
+      "folder": "07 Library/Course",
+      "template": "Templates/Library Course.md"
+    },
+    {
+      "folder": "07 Library/Notes",
+      "template": "Templates/Library Note.md"
+    },
+    {
+      "folder": "07 Library/Clippings",
+      "template": "Templates/Library Clipping.md"
     },
     {
       "folder": "09 Reading/Study Notes",

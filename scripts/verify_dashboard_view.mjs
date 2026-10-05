@@ -26,18 +26,18 @@ try {
     class ItemView extends Component{constructor(leaf){super();this.app=leaf.app;this.contentEl=document.querySelector('#root');}}
     const files=new Map(), metadata=new Map(), contents=new Map();
     const add=(path,data={},body='')=>{files.set(path,new TFile(path));metadata.set(path,{frontmatter:data,listItems:body.split('\n').flatMap((line,i)=>{const m=line.match(/^- \[(.)\]/);return m?[{task:m[1],position:{start:{line:i}}}]:[];})});contents.set(path,body);};
-    add('Meta/Compass Config.md',{questions:[{key:'dq_focus',text:'Did I focus on what matters?'}],habits:['habit_walk','habit_read']});
+    add('Meta/Compass Config.md',{questions:[{key:'dq_focus',text:'Did I focus on what matters?'}]});
     add('00 Dashboards/Setup.md',{status:'open'});
     for(const name of ['Assistant','Task Dashboard','Projects Dashboard','Compass Dashboard','Boards'])add(`00 Dashboards/${name}.md`);
-    for(let i=0;i<20;i++){const d=new Date('2026-09-09T12:00:00Z');d.setUTCDate(d.getUTCDate()-i);add(`01 Journal/Daily/${d.toISOString().slice(0,10)}.md`,{dq_focus:4+i%7,habit_walk:i%3!==0,habit_read:i%2===0});}
-    add('02 Retreats/2026-Q3 Personal Retreat.md',{wheel_health:7,wheel_work:6,wheel_relationships:8});
+    for(let i=0;i<20;i++){const d=new Date('2026-09-09T12:00:00Z');d.setUTCDate(d.getUTCDate()-i);add(`01 Journal/Daily/${d.toISOString().slice(0,10)}.md`,{dq_focus:4+i%7,highlight_of_the_day:i%3?'Synthetic highlight':''});}
+    add('02 Retreats/2026-Q3 Personal Retreat.md',{wheel_business:6,wheel_family:8,wheel_growth:7,wheel_health:7});
     add('04 Projects/Synthetic project.md',{type:'project',status:'active'},'- [ ] Review synthetic plan #project/synthetic-project 📅 2026-09-09\n- [ ] Draft outline #project/synthetic-project ⏳ 2026-09-10');
     add('08 Tasks/Tasks.md',{},'- [ ] Resolve fixture overdue task 📅 2026-09-08\n- [ ] Pick a focus ⏫');
     add('05 People/Synthetic person.md',{type:'person'},'- [ ] Discuss fixture #p/synthetic-person #discuss');
-    add('07 Library/Book Notes/Synthetic book.md',{type:'book'});
-    add('07 Library/Book Notes/Finished book.md',{type:'book',status:'completed'});
-    add('07 Library/Book Notes/Sample book.md',{type:'book',status:'reading',tags:['example']});
-    add('07 Library/Source.md',{type:'source',cover:'https://example.invalid/cover.png'});
+    add('07 Library/Notes/Synthetic book.md',{type:'note',kind:'book'});
+    add('07 Library/Notes/Finished book.md',{type:'note',kind:'book',status:'completed'});
+    add('07 Library/Notes/Sample book.md',{type:'note',kind:'book',status:'active',tags:['example']});
+    add('07 Library/Clippings/Source.md',{type:'clipping',cover:'https://example.invalid/cover.png'});
     const boardPath='06 Writing/Articles/Article Board.md';
     add(boardPath,{'kanban-plugin':'board'},'## Ideas\n- [ ] Fixture idea\n## Drafting\n- [ ] Fixture draft\n- [x] Fixture checked item');
     metadata.get(boardPath).headings=[{level:2,heading:'Ideas',position:{start:{line:0}}},{level:2,heading:'Drafting',position:{start:{line:2}}}];
@@ -71,7 +71,7 @@ try {
       await page.screenshot({path:'/tmp/life-os-home-lower-candidate.png'});
       await page.evaluate(()=>document.querySelector('#root').scrollTop=0);
     }
-    if(screen==='today')assert.equal(await page.locator('.life-os-checkin-meter').getAttribute('max'),'3');
+    if(screen==='today')assert.equal(await page.locator('.life-os-checkin-meter').getAttribute('max'),'1');
     if(screen==='projects')assert.ok((await page.locator('.life-os-record-metrics').textContent()).includes('2 tagged open'),await page.locator('.life-os-record-metrics').textContent());
     if(screen==='people'){
       await page.locator('.life-os-discussion-queue button').click();
@@ -97,7 +97,7 @@ try {
       assert.equal(await page.locator('.life-os-record-card').count(),3);
       assert.equal(await page.locator('.life-os-book-fallback').count(),3);
       assert.equal(await page.locator('img[src^="https:"]').count(),0);
-      await page.getByLabel('Library type',{exact:true}).selectOption('source');
+      await page.getByLabel('Library type',{exact:true}).selectOption('clipping');
       assert.equal(await page.locator('.life-os-record-card').count(),1);
       await page.getByLabel('Library type',{exact:true}).selectOption('all');
       await page.getByLabel('Library status',{exact:true}).selectOption('completed');

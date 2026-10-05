@@ -1,12 +1,12 @@
 These three turn the vault into a place to research and publish from, on top of the life workflows.
 
 ## Web viewer (core plugin, Obsidian 1.8+)
-Enabled in `core-plugins.json`; `.obsidian/webviewer.json` ships with external links opening in the viewer, ad blocking on, and saved pages going to `07 Library` (keys observed in public vaults, not officially documented; toggle once in settings to confirm on your build). Open links inside Obsidian, keep a browser tab next to a draft, and save a page as a note ("Save to vault") which pairs with the official Web Clipper. Settings → Core plugins → Web viewer: choose whether external links open in the viewer, set the search engine, and clear browsing data.
+Enabled in `core-plugins.json`; set the folder for saved pages to `07 Library/Clippings` in Settings → Web viewer (`.obsidian/webviewer.json` ships empty, so the app defaults apply until you do; the keys are not officially documented, so set it in the settings screen rather than the file). Open links inside Obsidian, keep a browser tab next to a draft, and save a page as a note ("Save to vault") which pairs with the official Web Clipper. Settings → Core plugins → Web viewer: choose whether external links open in the viewer, set the search engine, and clear browsing data.
 
 ## SEO (`seo` 0.5.6, https://github.com/davidvkimball/obsidian-seo)
 Audits notes meant to be published: title and description length, keyword in title/description/slug, heading hierarchy, alt text, broken and naked links, duplicate titles, reading level, word count. Score 40 to 100.
 - Commands: **Run current note audit**, **Run vault audit**.
-- Settings → SEO → scan directories: set `06 Writing` (and `07 Library` if you publish book notes). Leave the journal folders out; they are not for search engines.
+- Settings → SEO → scan directories: set `06 Writing` (and `07 Library/Notes` if you publish library notes). Leave the journal folders out; they are not for search engines.
 - External link checking is off by default and needs the network; leave it off in the template.
 - Frontmatter it reads: `title`, `description`, `slug`, `keywords` (configurable in settings). The writing templates carry `subject`, `meta_description`, `slug` today; align them with the plugin's property names in Settings → SEO if you want scores on drafts.
 - Part of the author's Vault CMS project; independent of any publishing platform.

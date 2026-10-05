@@ -1553,14 +1553,6 @@
 .life-os-effort-bar { width: 100%; min-height: 2px; background: var(--life-os-accent); border-radius: 3px 3px 0 0; }
 .life-os-effort-bar.is-missing { background: var(--life-os-line); }
 .life-os-chart-axis { display: flex; justify-content: space-between; margin-top: 10px; color: var(--text-muted); font-size: .68rem; }
-.life-os-habit-chart { grid-column: 1 / -1; }
-.life-os-habit-matrix { overflow-x: auto; padding-bottom: 6px; }
-.life-os-habit-row { display: grid; grid-template-columns: 130px minmax(300px, 1fr) 65px; align-items: center; gap: 12px; margin-top: 9px; font-size: .75rem; }
-.life-os-habit-cells { display: flex; gap: 3px; }
-.life-os-habit-cell { display: block; flex: 1; min-width: 5px; height: 18px; border-radius: 3px; border: 1px solid var(--life-os-line); }
-.life-os-habit-cell.is-done { background: #7aa995; border-color: #7aa995; }
-.life-os-habit-cell.is-open { background: var(--life-os-line); }
-.life-os-habit-cell.is-missing { background: transparent; }
 .life-os-wheel-row { display: grid; grid-template-columns: 100px minmax(0, 1fr) 36px; align-items: center; gap: 10px; margin-top: 13px; font-size: .72rem; }
 .life-os-wheel-track { height: 7px; border-radius: 8px; background: var(--life-os-line); overflow: hidden; }
 .life-os-wheel-fill { height: 100%; background: #c1ab7c; border-radius: inherit; }

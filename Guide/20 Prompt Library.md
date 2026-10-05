@@ -27,4 +27,4 @@ Frontmatter: `purpose`, `when`, `inputs` (what it reads), `writes` (what it may 
 Copy any prompt note, keep the frontmatter keys, write the job as numbered steps that name the MCP tool for each read and write, and end with what the agent must not do. Put a button on the dashboard or template where the job happens. Keep `autoSend` off so nothing is sent before you press send.
 
 ## Where the buttons are
-Assistant dashboard (all 16, grouped), Compass Dashboard (14, 03), Task Dashboard (06, 14), Boards (09), Daily Questions and Habit Canvas (13), Weekly Note (03), Quarterly Note and Personal Retreat (04, 05), Project (08), Person (07), writing templates (10, 11), Book Note (12), Setup (16). Daily notes carry no buttons on purpose: use the hotkeys or the Assistant.
+Assistant dashboard (all 16, grouped), Compass Dashboard (14, 03), Task Dashboard (06, 14), Boards (09), Daily Questions (13), Weekly Note (03), Quarterly Note and Personal Retreat (04, 05), Project (08), Person (07), writing templates (10, 11), Book Note (12), Setup (16). Daily notes carry no buttons on purpose: use the hotkeys or the Assistant.
