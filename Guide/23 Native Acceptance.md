@@ -4,7 +4,7 @@ This separates reproducible development evidence from native acceptance. A local
 
 ## Identify the candidate
 
-- Template version: 1.1.0 candidate
+- Template version: 2.0.0 candidate
 - Life OS plugin version: 0.20.0
 - Archive SHA256: use the exact candidate's external `.sha256` sidecar; not embedded here to avoid self-referential hashes
 - Operating system and Obsidian version: not recorded

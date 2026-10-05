@@ -1,5 +1,5 @@
 ---
-template_version: 1.1.0
+template_version: 2.0.0
 built: 2026-09-09
 release_status: candidate
 min_obsidian: 1.13.1

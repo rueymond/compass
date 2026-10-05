@@ -13,7 +13,7 @@ CI runs the application and release-safety contracts, builds a fresh candidate o
 3. Build a sanitized local candidate:
 
 ```bash
-python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-1.1.0-candidate --version 1.1.0 --zip
+python3 scripts/build_template.py --out ../life-os-releases --name LifeOS-2.0.0-candidate --version 2.0.0 --zip
 ```
 
 4. Inspect the candidate's embedded `MANIFEST.sha256` and the archive's full `.sha256` sidecar. Verify archive contents and paths, not only its filename.
