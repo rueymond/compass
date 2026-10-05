@@ -41,5 +41,5 @@
     <tspan x="96" y="450">everything else follows.</tspan>
   </text>
   <line x1="96" y1="506" x2="640" y2="506" stroke="#2a3140" stroke-width="1"/>
-  <text x="96" y="546" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="0.8" fill="#6f7787">Journal<tspan fill="#e3a75b">&#160;·&#160;</tspan>Retreat<tspan fill="#e3a75b">&#160;·&#160;</tspan>Plan<tspan fill="#e3a75b">&#160;·&#160;</tspan>Habits<tspan fill="#e3a75b">&#160;·&#160;</tspan>Tasks<tspan fill="#e3a75b">&#160;·&#160;</tspan>Write<tspan fill="#e3a75b">&#160;·&#160;</tspan>Assistant</text>
+  <text x="96" y="546" font-family="Inter, 'Segoe UI', Helvetica, Arial, sans-serif" font-size="17" font-weight="500" letter-spacing="0.8" fill="#6f7787">Journal<tspan fill="#e3a75b">&#160;·&#160;</tspan>Retreat<tspan fill="#e3a75b">&#160;·&#160;</tspan>Plan<tspan fill="#e3a75b">&#160;·&#160;</tspan>Focus<tspan fill="#e3a75b">&#160;·&#160;</tspan>Tasks<tspan fill="#e3a75b">&#160;·&#160;</tspan>Write<tspan fill="#e3a75b">&#160;·&#160;</tspan>Assistant</text>
 </svg>
