@@ -5,7 +5,7 @@ This separates reproducible development evidence from native acceptance. The 2.0
 ## Identify the candidate
 
 - Template version: 2.0.0 candidate
-- Life OS plugin version: 0.20.0
+- Life OS plugin version: 0.21.0 (the 2026-10-06 native run used the archive labelled 0.20.0; its `main.js` and `styles.css` are identical to 0.21.0, only the manifest version changed)
 - Archive SHA256: use the exact candidate's external `.sha256` sidecar; not embedded here to avoid self-referential hashes
 - Operating system and Obsidian version: Windows (vault on a Google Drive for desktop folder); Obsidian version not recorded
 - Test date and reviewer: 2026-10-06, owner
@@ -59,6 +59,20 @@ Artifact: `LifeOS-template-v2.0.0.zip`, built from `main` at `6909f08` with `bui
 | Retreat dimensions | A new personal retreat has exactly `wheel_business`, `wheel_family`, `wheel_growth`, `wheel_health` | Passed |
 
 No screenshots were captured and the Obsidian version was not recorded. The required checks were run the same day on the same install; their results are in the Required checks table.
+
+## Release review, 2026-10-06
+
+Human review from `scripts/RELEASE.md`, run on the archive with SHA256 `8d192e406a20521d8c4a7c319f72c3c35cfa1ab42752dffa5931d933763aa185`.
+
+| Item | Finding | Decision |
+| --- | --- | --- |
+| Private data and unexpected files | 216 files. No personal paths, account names, or email addresses (only an upstream author address in Dataview's manifest); no API keys, tokens, or private keys; Agent Client has no sessions and auto-approve off; QuickAdd AI providers empty and online features off; Omnisearch HTTP API off; Local REST API ships without a key; workspace opens only Setup; every user-folder note is tagged `example` | No change |
+| Version agreement | Template 2.0.0 candidate agrees across README, CHANGELOG, `Meta/version.md`, and this record. All eleven plugins agree across manifest, notices, and `Meta/version.md`. `life-os-app` code had changed in 2.0.0 under the old 0.20.0 label | Bumped `life-os-app` to 0.21.0 |
+| Provenance | Nine of ten third-party plugins byte-identical to their upstream release assets. Dataview 0.5.68 `main.js` carries an undocumented one-line inline-field rendering patch, present since 1.0.0 | Keep the patch; disclosed in `THIRD_PARTY_NOTICES.md` Modifications |
+| Licenses | Every plugin ships a LICENSE matching the notices. Kanban and Omnisearch are GPL-3.0, Templater AGPL-3.0, distributed as unmodified upstream `main.js` | Notices list the source commits; the published release attaches a `git archive` source zip of each at that commit |
+| Local REST API default | HTTP server on, loopback only (`127.0.0.1:27123`, confirmed in the native Bridge check), per-install key | Keep on: the MCP bridge (Guide 19) and Setup Tier 4 rely on it |
+
+The changes above produce a new candidate archive. Required re-check for it, because behavior is unchanged and only labels, notices, and documentation differ: extraction (SHA256 matches its sidecar), cold start, and one capture route. Status: pending.
 
 ## User-reported testing
 

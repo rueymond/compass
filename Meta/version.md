@@ -6,7 +6,7 @@ min_obsidian: 1.13.1
 plugins:
   agent-client: "0.12.1"
   dataview: "0.5.68"
-  life-os-app: "0.20.0"
+  life-os-app: "0.21.0"
   obsidian-kanban: "2.0.51"
   obsidian-local-rest-api: "5.1.0"
   obsidian-tasks-plugin: "8.4.0"
