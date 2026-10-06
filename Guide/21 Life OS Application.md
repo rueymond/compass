@@ -18,7 +18,7 @@ Life OS opens automatically after Obsidian finishes loading the vault. Use `Ctrl
 | Projects | Active outcomes and project ideas | `04 Projects/` and its Kanban board |
 | People | Relationships and discussion queues | `05 People/` and `#discuss` tasks |
 | Create | Newsletter, video, article, and course pipelines | `06 Writing/` boards |
-| Library | Reading, books, sources, and connected notes | `07 Library/` and `09 Reading/` |
+| Library | Courses, notes, clippings, reading, and connected notes | `07 Library/Course`, `Notes`, `Clippings`, and `09 Reading/` |
 | AI | Retrieval, triage, drafting, and setup | Assistant dashboard, prompts, Agent Client, MCP |
 
 ## Brain graph
@@ -42,7 +42,7 @@ The application version is 0.20.0. Synthetic browser checks are not native Obsid
 - Home's transparent Brain preview is non-animated and capped at 300 alphabetically selected eligible notes. Its connections only describe that subset, not the entire vault. Sample counts remain visible. Explore Brain opens the full module in the same tab and keeps the sidebar.
 - Focus groups each indexed open task exactly once: overdue first, then today, upcoming, or unscheduled/other. High priority remains visible in the feed but is not a second overlapping count. Past scheduled dates without a current due date fall into Other.
 - Create selects one content pipeline at a time. Lane labels come from the board's actual level-two headings. Counts represent indexed checkbox items in each lane, including checked items, not completion percentages. Missing metadata and sample boards have explicit unavailable/excluded states. Open board edits in the original Kanban surface; lane buttons open the source heading.
-- Library lists typed notes under `07 Library/`, including completed books and sources, and filters by actual type and status properties. Samples remain excluded. Missing status is shown as not set, not inferred as ready. A `cover` property can reference an existing local PNG, JPEG, WebP, or GIF, including a wikilink. Remote covers are never requested; unavailable covers use a text fallback.
+- Library lists typed notes under `07 Library/` (`course`, `note`, and `clipping`, including finished ones) and filters by actual type and status properties. Samples remain excluded. Missing status is shown as not set, not inferred as ready. A `cover` property can reference an existing local PNG, JPEG, WebP, or GIF, including a wikilink. Remote covers are never requested; unavailable covers use a text fallback.
 - AI shows an integration overview and observable configuration. It does not test provider authentication or send requests. An available key is not evidence of a working connection.
 
 The top-bar View menu controls optional visuals globally or for the current module, compact/comfortable spacing, and 3/6/12 items for record and Focus lists. Home and Today keep their attention limits of three and five. Controls apply to the current open view only and reset when that view is recreated. Restore view defaults resets display choices without editing any vault configuration. Persisted presets and additional property mappings are not implemented.
@@ -53,7 +53,7 @@ Today shows recorded-property coverage, not a life score. Focus workload segment
 
 Create shows up to three indexed open-item previews in each lane, while its heading count still includes all indexed checkbox items, including checked items. Source-line links open the original board. Missing and partial indexes remain visible. AI's diagram distinguishes the provider path from optional local MCP tools; neither branch implies a tested live connection.
 
-The live Today cockpit reads configured `dq_*` and `highlight_of_the_day` frontmatter through Obsidian's local metadata cache. It does not render or send journal prose. Capture buttons run the existing QuickAdd commands so routing stays visible and deterministic. Universal Capture can also create actual Project, Person, newsletter, video-script, article, course-lesson, book, and study notes from the canonical templates, leaving an existing same-name note untouched.
+The live Today cockpit reads configured `dq_*` and `highlight_of_the_day` frontmatter through Obsidian's local metadata cache. It does not render or send journal prose. Capture buttons run the existing QuickAdd commands so routing stays visible and deterministic. Universal Capture can also create actual Project, Person, newsletter, video-script, article, course-lesson, library course, library note, clipping, and study notes from the canonical templates, leaving an existing same-name note untouched.
 
 AI may retrieve, summarize, detect patterns, and draft. Human approval is the operating policy, not a universal enforcement guarantee. The AI module reports the observable Agent Client permission setting; it does not change it. The application does not contain direct network, process, or vault-write capabilities.
 
