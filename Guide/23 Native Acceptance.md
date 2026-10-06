@@ -1,15 +1,15 @@
 # Native acceptance record
 
-This separates reproducible development evidence from native acceptance. The 2.0.0 candidate has passed automated packaging and disposable extraction checks, and every required native check below passed in an owner-reported run on 2026-10-06 (Windows, no screenshots, Obsidian version not recorded). The optional checks were not exercised. That run used the owner's fresh install of the candidate (example notes only), not a separate isolated Obsidian profile. Repeat the required checks for each new candidate, against a fresh, sanitized candidate in an isolated Obsidian profile. Do not use real personal notes or provider credentials for the basic acceptance pass.
+This separates reproducible development evidence from native acceptance. The 2.0.0 candidate has passed automated packaging and disposable extraction checks, and every required native check below passed in an owner-reported run on 2026-10-06 (Windows, no screenshots, Obsidian version not recorded). The optional checks were not exercised. After the release review and a short re-check of the rebuilt archive, 2.0.0 was released on 2026-10-06. That run used the owner's fresh install of the candidate (example notes only), not a separate isolated Obsidian profile. Repeat the required checks for each new candidate, against a fresh, sanitized candidate in an isolated Obsidian profile. Do not use real personal notes or provider credentials for the basic acceptance pass.
 
 ## Identify the candidate
 
-- Template version: 2.0.0 candidate
+- Template version: 2.0.0, released 2026-10-06
 - Life OS plugin version: 0.21.0 (the 2026-10-06 native run used the archive labelled 0.20.0; its `main.js` and `styles.css` are identical to 0.21.0, only the manifest version changed)
-- Archive SHA256: use the exact candidate's external `.sha256` sidecar; not embedded here to avoid self-referential hashes
+- Archive SHA256: released archive `f706f8196d135db178afedc4c8b1c21d5ae46a032a5c1302130a6b9b6c97777f` (the 2026-10-06 native run used the earlier build `8d192e40...3aa185`; see Release review). For any later candidate, use its external `.sha256` sidecar
 - Operating system and Obsidian version: Windows (vault on a Google Drive for desktop folder); Obsidian version not recorded
 - Test date and reviewer: 2026-10-06, owner
-- Result: automated development checks passed; all required native checks and the four 2.0.0 feature checks passed, owner-reported on 2026-10-06 (see below); optional checks not tested; Obsidian version and screenshots not recorded
+- Result: automated development checks passed; all required native checks and the four 2.0.0 feature checks passed, owner-reported on 2026-10-06 (see below); release review done and the rebuilt archive re-checked; accepted and released as 2.0.0 on 2026-10-06; optional checks not tested; Obsidian version and screenshots not recorded
 
 ## Required checks
 
@@ -72,7 +72,9 @@ Human review from `scripts/RELEASE.md`, run on the archive with SHA256 `8d192e40
 | Licenses | Every plugin ships a LICENSE matching the notices. Kanban and Omnisearch are GPL-3.0, Templater AGPL-3.0, distributed as unmodified upstream `main.js` | Notices list the source commits; the published release attaches a `git archive` source zip of each at that commit |
 | Local REST API default | HTTP server on, loopback only (`127.0.0.1:27123`, confirmed in the native Bridge check), per-install key | Keep on: the MCP bridge (Guide 19) and Setup Tier 4 rely on it |
 
-The changes above produce a new candidate archive. Required re-check for it, because behavior is unchanged and only labels, notices, and documentation differ: extraction (SHA256 matches its sidecar), cold start, and one capture route. Status: pending.
+The changes above produce a new candidate archive. Required re-check for it, because behavior is unchanged and only labels, notices, and documentation differ: extraction (SHA256 matches its sidecar), cold start, and one capture route. Status: passed (2026-10-06, owner) on `LifeOS-template-v2.0.0.zip`, SHA256 `f706f8196d135db178afedc4c8b1c21d5ae46a032a5c1302130a6b9b6c97777f`: the hash matched, Life OS 0.21.0 loaded after a cold start, and New clipping created a filled-in note in `07 Library/Clippings`. That exact archive is the 2.0.0 release.
+
+Known cosmetic mismatch: the builder stamps every archive as a candidate, so inside the released archive `Meta/version.md` reads `release_status: candidate` and this record shows the re-check as pending. The archive was not rebuilt to change that text, because rebuilding would produce untested bytes.
 
 ## User-reported testing
 

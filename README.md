@@ -7,7 +7,7 @@
 
 Compass is a complete Obsidian vault template of the system Mike Schmitz describes in "How I Run My Whole Life Out of Obsidian": journaling with daily questions, quarterly personal retreats, multi-scale planning, daily reading, task management, writing boards, and a DataviewJS dashboard that ties it together. The first-party Life OS application now sits above those workflows, with an AI assistant that reads `AGENTS.md` and runs a library of approval-aware prompts. Everything remains plain Markdown and properties. Ten community plugins and the first-party Life OS plugin ship inside the folder with their licenses.
 
-**Status: development candidate, not a newly accepted public release.** The existing 1.0.2 archives predate the Life OS application. The next template candidate is 2.0.0 (breaking: habit tracking removed, library restructured; see `CHANGELOG.md`), subject to packaging and native acceptance. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
+**Status: 2.0.0 released 2026-10-06** (breaking: habit tracking removed, library restructured; see `CHANGELOG.md`). Download `LifeOS-template-v2.0.0.zip` from Releases and check it against its `.sha256`. The 1.0.2 archives predate the Life OS application. Requires Obsidian 1.13.1 or newer. Core dashboard mobile compatibility needs native testing; Agent Client and the local API bridge are desktop-only.
 
 ## Watch the demo
 

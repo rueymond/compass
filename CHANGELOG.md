@@ -2,7 +2,9 @@
 
 Format: Added, Changed, Templates (manual merge notes), Plugins, Breaking. Semver: major = path or property rename, minor = new widget or workflow, patch = docs and fixes.
 
-## 2.0.0 (candidate, not yet released)
+## 2.0.0 (2026-10-06)
+
+Released archive: `LifeOS-template-v2.0.0.zip`, SHA256 `f706f8196d135db178afedc4c8b1c21d5ae46a032a5c1302130a6b9b6c97777f`. Native acceptance and release review are recorded in `Guide/23 Native Acceptance.md`.
 
 Major version because of the breaking changes below (habit properties removed, `07 Library/Book Notes` moved). The 1.1.0 candidate was never published; its application and release-hardening changes listed in this section ship as part of 2.0.0.
 

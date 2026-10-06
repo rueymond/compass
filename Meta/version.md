@@ -1,7 +1,7 @@
 ---
 template_version: 2.0.0
 built: 2026-09-09
-release_status: candidate
+release_status: released
 min_obsidian: 1.13.1
 plugins:
   agent-client: "0.12.1"
@@ -18,4 +18,4 @@ plugins:
 ---
 # Version
 
-This is a local candidate, not evidence of native acceptance or publication. There is no in-place updater. Back up the old vault and migrate content and custom configuration into a separate fresh copy with conflict review. See `scripts/RELEASE.md`.
+2.0.0 was released on 2026-10-06 as `LifeOS-template-v2.0.0.zip` (SHA256 `f706f8196d135db178afedc4c8b1c21d5ae46a032a5c1302130a6b9b6c97777f`). This file describes the repository source; every archive built from it is stamped as a new candidate until it passes `Guide/23 Native Acceptance.md`. There is no in-place updater. Back up the old vault and migrate content and custom configuration into a separate fresh copy with conflict review. See `scripts/RELEASE.md`.
