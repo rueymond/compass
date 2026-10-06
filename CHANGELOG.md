@@ -23,6 +23,12 @@ Breaking
 - `07 Library/Book Notes` and `Templates/Book Note.md` replaced by `07 Library/Notes` and `Templates/Library Note.md` (`type: note`, `kind: book`). QuickAdd `lifeos-new-book` is gone. Move existing book notes by hand.
 - Old eight-area `wheel_*` keys in existing retreat notes still render, but new retreats use the four dimensions.
 
+Application 0.21.0
+- Life OS application bumped from 0.20.0 to 0.21.0 for the 2.0.0 changes: Today shows the highlight of the day instead of habits, Review drops the habit chart, and the Library and Capture actions create courses, notes, and clippings.
+
+Notices
+- `THIRD_PARTY_NOTICES.md` records a byte-for-byte provenance check against upstream releases, discloses the long-standing Dataview 0.5.68 `main.js` patch, and lists the source commits for the GPL and AGPL plugins, whose source archives are attached to each published release.
+
 Templates (manual merge)
 - `Daily Note`, `Daily Questions Prompt`, `Personal Retreat`, `Weekly Note`, `Quarterly Note`, `Project`; new `Library Course`, `Library Note`, `Library Clipping`; removed `Book Note`.
 

@@ -28,7 +28,7 @@ Files covered by reviewed defaults are skipped before copying. Canonical project
 
 - Review the exact archive for private data, example labeling, source paths, and unexpected files. The machine-local working vault is not the review target.
 - Check README, CHANGELOG, application manifest, notices, and candidate version metadata agree. Old 1.0.2 archives are not current Life OS candidates.
-- Verify upstream binary provenance and license requirements separately. Kanban's bundled license is GPL-3.0, not MIT. Presence of a LICENSE file alone is not a completed redistribution review.
+- Verify upstream binary provenance and license requirements separately: compare each plugin's `main.js`, `manifest.json`, and `styles.css` byte for byte with its upstream release assets, and keep `THIRD_PARTY_NOTICES.md` Modifications current. Kanban and Omnisearch are GPL-3.0 and Templater is AGPL-3.0: attach a source archive of each at its release-tag commit (`git archive`) to the published release. Presence of a LICENSE file alone is not a completed redistribution review.
 - Local REST API remains enabled over loopback HTTP in the package policy. Changing that default requires an explicit decision. Verify actual listener behavior in the isolated native test.
 - Complete `Guide/23 Native Acceptance.md` against the archive checksum. Record desktop-native, mobile, provider, and MCP outcomes separately.
 - Do not claim a provider is connected or a backup is recoverable without testing it.

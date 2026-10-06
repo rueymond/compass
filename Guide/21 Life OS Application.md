@@ -35,7 +35,7 @@ Review holds two property-based charts: daily effort and life-dimension scores f
 
 Plan includes a six-week month calendar. Highlighted dates open existing daily notes. Today can invoke the existing QuickAdd capture when its note is missing. Other empty dates are disabled. Month navigation never generates notes or edits journal content.
 
-The application version is 0.20.0. Synthetic browser checks are not native Obsidian acceptance. Complete [[23 Native Acceptance]] before treating a packaged candidate as release-ready.
+The application version is 0.21.0. Synthetic browser checks are not native Obsidian acceptance. Complete [[23 Native Acceptance]] before treating a packaged candidate as release-ready.
 
 ## Minimal visual summaries
 
